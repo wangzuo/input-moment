@@ -1,6 +1,6 @@
 {
-  "name": "react-input-moment",
-  "version": "0.0.0",
+  "name": "input-moment",
+  "version": "0.0.1",
   "description": "React input moment",
   "main": "index.js",
   "scripts": {
@@ -22,5 +22,23 @@
     "classnames": "^2.2.0",
     "moment": "^2.10.6",
     "react-input-slider": "^1.3.0"
-  }
+  },
+  "directories": {
+    "example": "example"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangzuo/input-moment.git"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "input",
+    "datetime",
+    "moment"
+  ],
+  "bugs": {
+    "url": "https://github.com/wangzuo/input-moment/issues"
+  },
+  "homepage": "https://github.com/wangzuo/input-moment#readme"
 }
