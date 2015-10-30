@@ -12,7 +12,7 @@
   "gh-pages-deploy": {
     "staticpath": "example",
     "prep": [
-      "make"
+      "build"
     ]
   },
   "author": "Wang Zuo",
