@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server -c --port=8888",
     "build": "make",
-    "deploy": "github-pages-deploy",
+    "deploy": "npm run build && github-pages-deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "github-pages-deploy": {
