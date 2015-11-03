@@ -18,6 +18,7 @@ var App = React.createClass({
   render() {
     return (
       <div className="app">
+        <h1>input-moment</h1>
         <div>{this.state.m.format('YYYY MMMM Do, h:mm')}</div>
         <InputMoment moment={this.state.m} onChange={this.handleChange}/>
       </div>
