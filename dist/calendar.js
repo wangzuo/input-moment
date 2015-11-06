@@ -42,7 +42,7 @@ module.exports = React.createClass({
 
     return React.createElement(
       'div',
-      { className: cx('calendar', this.props.className) },
+      { className: cx('m-calendar', this.props.className) },
       React.createElement(
         'div',
         { className: 'toolbar' },
