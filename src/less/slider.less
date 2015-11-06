@@ -1,15 +1,12 @@
 @import 'variables';
 
-@xy-handle-size: 8px;
-@size: 4px;
-@fix: 4px;
-
-.u-slider {
+.u-slider-time {
   position: relative;
   display: inline-block;
   background-color: @color-gray;
   border-radius: 3px;
-  height: @size;
+  height: @slider-size;
+  width: 100%;
 
   .value {
     position: absolute;
@@ -21,20 +18,20 @@
 
   .handle {
     position: absolute;
-    width: @size;
-    height: @size;
+    width: @slider-size;
+    height: @slider-size;
 
     &:after {
       position: relative;
       display: block;
       content: '';
-      top: -@fix/2;
-      left: -(@size+@fix)/2;
-      width: @size + @fix;
-      height: @size + @fix;
+      top: -@slider-fix/2;
+      left: -(@slider-size+@slider-fix)/2;
+      width: @slider-size + @slider-fix;
+      height: @slider-size + @slider-fix;
       background-color: #fff;
       border: 3px solid @color-blue;
-      border-radius: 6px;
+      border-radius: 50%;
     }
   }
 }

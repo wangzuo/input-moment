@@ -1,9 +1,11 @@
 @import 'variables';
-@import "calendar";
-@import "input-slider";
+@import 'calendar';
+@import 'time';
+@import 'slider';
 
 .m-input-moment {
-  padding: 18px;
+  max-width: 100%;
+  padding: 15px;
   border-radius: 3px;
   border: 1px solid @color-gray;
 
@@ -59,23 +61,5 @@
     border-radius: 3px;
     cursor: pointer;
     outline: 0;
-  }
-}
-
-.m-time {
-  margin-top: 7px;
-  margin-bottom: 9px;
-  color: #ffffff;
-
-  .showtime {
-    text-align: center;
-  }
-
-  .time {
-    display: inline-block;
-    font-size: 32px;
-    background-color: @color-blue;
-    padding: 18px 9px;
-    border-radius: 3px;
   }
 }

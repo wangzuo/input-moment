@@ -16,11 +16,23 @@ module.exports = React.createClass({
           <span className="time">{m.minute()}</span>
         </div>
 
-        <div>
-          <div>Hours</div>
-          <InputSlider xmin={0} xmax={23} x={m.hour()} onChange={this.changeHours}/>
-          <div>Minutes</div>
-          <InputSlider xmin={0} xmax={59} x={m.minute()} onChange={this.changeMinutes}/>
+        <div className="sliders">
+          <div className="time-text">Hours:</div>
+          <InputSlider
+            className="u-slider-time"
+            xmin={0}
+            xmax={23}
+            x={m.hour()}
+            onChange={this.changeHours}
+          />
+          <div className="time-text">Minutes:</div>
+          <InputSlider
+            className="u-slider-time"
+            xmin={0}
+            xmax={59}
+            x={m.minute()}
+            onChange={this.changeMinutes}
+          />
         </div>
       </div>
     );

@@ -27,11 +27,14 @@
     text-align: center;
     cursor: pointer;
     color: @color-gray;
-    border-radius: 23px;
+    border: 1px solid @color-gray;
+  }
 
+  tbody td {
     &:hover {
-      background: #cacaca;
-      color: #fff;
+      background: @color-blue;
+      border-color: @color-blue;
+      color: @color-white;
     }
   }
 
@@ -71,6 +74,7 @@
     }
 
     .current-date {
+      color: @color-blue;
     }
   }
 }
