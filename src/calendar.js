@@ -39,7 +39,7 @@ module.exports = React.createClass({
     var weeks = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
     return (
-      <div className={cx('calendar', this.props.className)}>
+      <div className={cx('m-calendar', this.props.className)}>
         <div className="toolbar">
           <button className="prev-month" onClick={this.prevMonth}>
             <i className="ion-ios-arrow-left"/>

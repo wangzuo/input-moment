@@ -1,14 +1,7 @@
 @import 'variables';
 
-.month {
-  font-size: 4em;
-  line-height: 1em;
-  text-transform: lowercase;
-}
-
-.calendar {
+.m-calendar {
   display: inline-block;
-  height: 320px;
 
   table {
     width: 100%;
@@ -17,18 +10,22 @@
     table-layout: fixed;
   }
 
-  thead {
-    color: @color-blue;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
-
   td {
-    padding: 9px 12px;
+    padding: 8px 0;
     text-align: center;
     cursor: pointer;
     color: @color-gray;
     border: 1px solid @color-gray;
+  }
+
+  thead {
+    td {
+      color: @color-blue;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
   }
 
   tbody td {
@@ -39,6 +36,12 @@
     }
   }
 
+  .month {
+    font-size: 4em;
+    line-height: 1em;
+    text-transform: lowercase;
+  }
+
   .current-day {
     color: @color-blue;
   }
@@ -47,7 +50,7 @@
     line-height: 30px;
     color: @color-blue;
     text-align: center;
-    margin-bottom: 7px;
+    margin-bottom: 13px;
 
     button {
       position: relative;

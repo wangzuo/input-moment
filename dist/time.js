@@ -17,34 +17,46 @@ module.exports = React.createClass({
         React.createElement(
           'span',
           { className: 'time' },
-          m.hour()
+          m.format('hh')
         ),
         React.createElement(
           'span',
-          null,
+          { className: 'separater' },
           ':'
         ),
         React.createElement(
           'span',
           { className: 'time' },
-          m.minute()
+          m.format('mm')
         )
       ),
       React.createElement(
         'div',
-        null,
+        { className: 'sliders' },
         React.createElement(
           'div',
-          null,
-          'Hours'
+          { className: 'time-text' },
+          'Hours:'
         ),
-        React.createElement(InputSlider, { xmin: 0, xmax: 23, x: m.hour(), onChange: this.changeHours }),
+        React.createElement(InputSlider, {
+          className: 'u-slider-time',
+          xmin: 0,
+          xmax: 23,
+          x: m.hour(),
+          onChange: this.changeHours
+        }),
         React.createElement(
           'div',
-          null,
-          'Minutes'
+          { className: 'time-text' },
+          'Minutes:'
         ),
-        React.createElement(InputSlider, { xmin: 0, xmax: 59, x: m.minute(), onChange: this.changeMinutes })
+        React.createElement(InputSlider, {
+          className: 'u-slider-time',
+          xmin: 0,
+          xmax: 59,
+          x: m.minute(),
+          onChange: this.changeMinutes
+        })
       )
     );
   },
