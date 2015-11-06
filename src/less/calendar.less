@@ -1,4 +1,4 @@
-@color-active: #00a8bb;
+@import 'variables';
 
 .month {
   font-size: 4em;
@@ -7,8 +7,6 @@
 }
 
 .calendar {
-  background: #515766;
-  color: #555;
   display: inline-block;
 
   table {
@@ -17,62 +15,62 @@
     border-spacing: 0;
     table-layout: fixed;
   }
-}
 
-.calendar thead {
-  color: @color-active;
-  font-weight: 700;
-  text-transform: uppercase;
-}
+  thead {
+    color: @color-blue;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
 
-.calendar td {
-  padding: 9px 12px;
-  text-align: center;
-  cursor: pointer;
-  color: #f6f6f6;
-  border-radius: 23px;
-}
-
-.calendar tbody td:hover {
-  background: #cacaca;
-  color: #fff;
-}
-
-.current-day {
-  color: @color-active;
-}
-
-.toolbar {
-  line-height: 30px;
-  color: #959bab;
-  text-align: center;
-  margin-bottom: 7px;
-
-  button {
-    position: relative;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    color: #959bab;
-    border: 1px solid #424857;
-    border-radius: 50%;
-    background: #515766;
-    font-size: 20px;
-    padding: 0;
+  td {
+    padding: 9px 12px;
     text-align: center;
-    outline: 0;
-    z-index: 5;
     cursor: pointer;
+    color: @color-gray;
+    border-radius: 23px;
+
+    &:hover {
+      background: #cacaca;
+      color: #fff;
+    }
   }
 
-  .prev-month {
-    float: left;
+  .current-day {
+    color: @color-blue;
   }
 
-  .next-month {
-    float: right;
-  }
+  .toolbar {
+    line-height: 30px;
+    color: @color-blue;
+    text-align: center;
+    margin-bottom: 7px;
 
-  .current-date {
+    button {
+      position: relative;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      color: #ffffff;
+      border: 1px solid @color-blue;
+      border-radius: 50%;
+      background: @color-blue;
+      font-size: 20px;
+      padding: 0;
+      text-align: center;
+      outline: 0;
+      z-index: 5;
+      cursor: pointer;
+    }
+
+    .prev-month {
+      float: left;
+    }
+
+    .next-month {
+      float: right;
+    }
+
+    .current-date {
+    }
   }
 }
