@@ -1,6 +1,6 @@
 all:
 	babel src --out-dir dist
-	webpack
+	webpack -p
 clean:
 	rm dist/*
 	rm example/bundle*
