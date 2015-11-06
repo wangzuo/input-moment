@@ -9,7 +9,7 @@ module.exports = React.createClass({
 
   getInitialState() {
     return {
-      tab: 1
+      tab: 0
     };
   },
 
