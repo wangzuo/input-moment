@@ -1,5 +1,3 @@
-'use strict';
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var cx = require('classnames');
@@ -11,7 +9,7 @@ require('./chunk');
 var Day = React.createClass({
   displayName: 'Day',
 
-  render: function render() {
+  render() {
     var i = this.props.i;
     var w = this.props.w;
     var cn = cx({
@@ -31,9 +29,7 @@ var Day = React.createClass({
 module.exports = React.createClass({
   displayName: 'Calendar',
 
-  render: function render() {
-    var _this = this;
-
+  render() {
     var m = this.props.moment;
     var d = m.date();
     var d1 = m.clone().subtract(1, 'month').endOf('month').date();
@@ -75,41 +71,35 @@ module.exports = React.createClass({
           React.createElement(
             'tr',
             null,
-            weeks.map(function (w, i) {
-              return React.createElement(
-                'td',
-                { key: i },
-                w
-              );
-            })
+            weeks.map((w, i) => React.createElement(
+              'td',
+              { key: i },
+              w
+            ))
           )
         ),
         React.createElement(
           'tbody',
           null,
-          days.chunk(7).map(function (row, w) {
-            return React.createElement(
-              'tr',
-              { key: w },
-              row.map(function (i) {
-                return React.createElement(Day, { key: i, i: i, d: d, w: w, onClick: _this.selectDate.bind(null, i) });
-              })
-            );
-          })
+          days.chunk(7).map((row, w) => React.createElement(
+            'tr',
+            { key: w },
+            row.map(i => React.createElement(Day, { key: i, i: i, d: d, w: w, onClick: this.selectDate.bind(null, i) }))
+          ))
         )
       )
     );
   },
 
-  selectDate: function selectDate(i) {
+  selectDate(i) {
     this.props.onChange(this.props.moment.date(i));
   },
 
-  prevMonth: function prevMonth() {
+  prevMonth() {
     this.props.onChange(this.props.moment.subtract(1, 'month'));
   },
 
-  nextMonth: function nextMonth() {
+  nextMonth() {
     this.props.onChange(this.props.moment.add(1, 'month'));
   }
 });

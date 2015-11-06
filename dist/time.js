@@ -1,5 +1,3 @@
-'use strict';
-
 var cx = require('classnames');
 var React = require('react');
 var InputSlider = require('react-input-slider');
@@ -7,7 +5,7 @@ var InputSlider = require('react-input-slider');
 module.exports = React.createClass({
   displayName: 'Time',
 
-  render: function render() {
+  render() {
     var m = this.props.moment;
 
     return React.createElement(
@@ -51,13 +49,13 @@ module.exports = React.createClass({
     );
   },
 
-  changeHours: function changeHours(pos) {
+  changeHours(pos) {
     var m = this.props.moment;
     m.hours(parseInt(pos.x, 10));
     this.props.onChange(m);
   },
 
-  changeMinutes: function changeMinutes(pos) {
+  changeMinutes(pos) {
     var m = this.props.moment;
     m.minutes(parseInt(pos.x, 10));
     this.props.onChange(m);
