@@ -1,3 +1,5 @@
+"use strict";
+
 Array.prototype.chunk = function (chunkSize) {
   var array = this;
 

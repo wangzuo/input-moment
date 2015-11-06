@@ -1,3 +1,5 @@
+'use strict';
+
 var cx = require('classnames');
 var moment = require('moment');
 var React = require('react');
@@ -7,13 +9,12 @@ var Time = require('./time');
 module.exports = React.createClass({
   displayName: 'InputMoment',
 
-  getInitialState() {
+  getInitialState: function getInitialState() {
     return {
       tab: 0
     };
   },
-
-  render() {
+  render: function render() {
     var tab = this.state.tab;
     var m = this.props.moment;
 
@@ -55,8 +56,7 @@ module.exports = React.createClass({
       )
     );
   },
-
-  handleClick(tab) {
+  handleClick: function handleClick(tab) {
     this.setState({ tab: tab });
   }
 });
