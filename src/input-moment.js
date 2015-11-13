@@ -20,12 +20,12 @@ module.exports = React.createClass({
     return (
       <div className="m-input-moment">
         <div className="options">
-          <div className={cx('ion-calendar option', {'is-active': tab === 0})} onClick={this.handleClick.bind(null, 0)}>
+          <button className={cx('ion-calendar im-btn', {'is-active': tab === 0})} onClick={this.handleClick.bind(null, 0)}>
             Date
-          </div>
-          <div className={cx('ion-clock option', {'is-active': tab === 1})} onClick={this.handleClick.bind(null, 1)}>
+          </button>
+          <button className={cx('ion-clock im-btn', {'is-active': tab === 1})} onClick={this.handleClick.bind(null, 1)}>
             Time
-          </div>
+          </button>
         </div>
 
         <div className="tabs">
@@ -42,7 +42,7 @@ module.exports = React.createClass({
           />
         </div>
 
-        <button className="btn-save ion-checkmark">Save</button>
+        <button className="im-btn btn-save ion-checkmark">Save</button>
       </div>
     );
   },

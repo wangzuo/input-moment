@@ -3,7 +3,21 @@
 @import 'time';
 @import 'slider';
 
+.im-btn {
+  display: inline-block;
+  background-color: #ffffff;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  line-height: 1;
+
+  &:before {
+    margin-right: 6px;
+  }
+}
+
 .m-input-moment {
+  display: inline-block;
   width: 330px;
   padding: 12px 15px;
   border-radius: 3px;
@@ -12,27 +26,32 @@
   .options {
     width: 100%;
     display: inline-block;
-    border: 1px solid @color-blue;
-    border-radius: 3px;
     margin-bottom: 4px;
-  }
 
-  .option {
-    float: left;
-    width: 50%;
-    color: @color-blue;
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-    padding: 7px;
+    button {
+      float: left;
+      width: 50%;
+      color: @color-blue;
+      text-align: center;
+      font-size: 16px;
+      padding: 7px;
+      border: 1px solid @color-blue;
+      border-radius: 3px;
 
-    .text {
-      margin-left: 6px;
-    }
+      &:first-child {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
 
-    &.is-active {
-      color: #ffffff;
-      background-color: @color-blue;
+      &:last-child {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      &.is-active {
+        color: #ffffff;
+        background-color: @color-blue;
+      }
     }
   }
 
@@ -52,16 +71,12 @@
   .btn-save {
     display: block;
     margin-top: 10px;
-    border: 0;
     width: 100%;
     background-color: @color-blue;
     padding: 12px 0;
-    line-height: 1;
     text-align: center;
     color: #ffffff;
     font-size: 16px;
     border-radius: 3px;
-    cursor: pointer;
-    outline: 0;
   }
 }
