@@ -25,13 +25,13 @@ module.exports = React.createClass({
         'div',
         { className: 'options' },
         React.createElement(
-          'div',
-          { className: cx('ion-calendar option', { 'is-active': tab === 0 }), onClick: this.handleClick.bind(null, 0) },
+          'button',
+          { className: cx('ion-calendar im-btn', { 'is-active': tab === 0 }), onClick: this.handleClick.bind(null, 0) },
           'Date'
         ),
         React.createElement(
-          'div',
-          { className: cx('ion-clock option', { 'is-active': tab === 1 }), onClick: this.handleClick.bind(null, 1) },
+          'button',
+          { className: cx('ion-clock im-btn', { 'is-active': tab === 1 }), onClick: this.handleClick.bind(null, 1) },
           'Time'
         )
       ),
@@ -51,7 +51,7 @@ module.exports = React.createClass({
       ),
       React.createElement(
         'button',
-        { className: 'btn-save ion-checkmark' },
+        { className: 'im-btn btn-save ion-checkmark' },
         'Save'
       )
     );
