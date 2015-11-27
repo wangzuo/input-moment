@@ -4,7 +4,7 @@
   "description": "React input moment",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server -c --port=8888",
+    "start": "node_modules/.bin/webpack-dev-server -c --port=8888",
     "build": "make",
     "deploy": "npm run build && github-pages-deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,7 +16,8 @@
   "license": "ISC",
   "peerDependencies": {
     "react": "^0.14.0",
-    "react-dom": "^0.14.0"
+    "react-dom": "^0.14.0",
+    "moment": "^2.10.6"
   },
   "devDependencies": {
     "babel-core": "^6.1.2",
@@ -28,12 +29,12 @@
     "less": "^2.5.3",
     "less-loader": "^2.2.1",
     "style-loader": "^0.13.0",
-    "webpack": "^1.12.3"
+    "webpack": "^1.12.3",
+    "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
     "blacklist": "^1.1.2",
     "classnames": "^2.2.0",
-    "moment": "^2.10.6",
     "react-input-slider": "^1.5.0"
   },
   "directories": {
