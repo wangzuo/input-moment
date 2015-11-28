@@ -18,6 +18,7 @@ http://wangzuo.github.io/input-moment
 <InputMoment
   moment={this.state.moment}
   onChange={this.handleChange}
+  onSave={this.handleSave}
 />
 ```
 Check [app.js](https://github.com/wangzuo/input-moment/blob/master/example/app.js) for a working example.

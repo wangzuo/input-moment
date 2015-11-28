@@ -64,7 +64,7 @@ module.exports = React.createClass({
               <tr key={w}>
                 {row.map((i) => (
                   <Day key={i} i={i} d={d} w={w}
-                    onClick={this.selectDate.bind(null, i)}
+                    onClick={this.selectDate.bind(null, i, w)}
                   />
                 ))}
               </tr>
@@ -75,8 +75,16 @@ module.exports = React.createClass({
     );
   },
 
-  selectDate(i) {
-    this.props.onChange(this.props.moment.date(i));
+  selectDate(i, w) {
+    var prevMonth = (w === 0 && i > 7);
+    var nextMonth = (w >= 4 && i <= 14);
+    var m = this.props.moment;
+
+    m.date(i);
+    if(prevMonth) m.subtract(1, 'month');
+    if(nextMonth) m.add(1, 'month');
+
+    this.props.onChange(m);
   },
 
   prevMonth() {
