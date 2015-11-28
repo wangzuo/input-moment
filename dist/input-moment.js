@@ -1,62 +1,12 @@
-'use strict';
-
-var cx = require('classnames');
-var moment = require('moment');
-var React = require('react');
-var Calendar = require('./calendar');
-var Time = require('./time');
-
-module.exports = React.createClass({
-  displayName: 'InputMoment',
-
-  getInitialState: function getInitialState() {
-    return {
-      tab: 0
-    };
-  },
-  render: function render() {
-    var tab = this.state.tab;
-    var m = this.props.moment;
-
-    return React.createElement(
-      'div',
-      { className: 'm-input-moment' },
-      React.createElement(
-        'div',
-        { className: 'options' },
-        React.createElement(
-          'button',
-          { className: cx('ion-calendar im-btn', { 'is-active': tab === 0 }), onClick: this.handleClick.bind(null, 0) },
-          'Date'
-        ),
-        React.createElement(
-          'button',
-          { className: cx('ion-clock im-btn', { 'is-active': tab === 1 }), onClick: this.handleClick.bind(null, 1) },
-          'Time'
-        )
-      ),
-      React.createElement(
-        'div',
-        { className: 'tabs' },
-        React.createElement(Calendar, {
-          className: cx('tab', { 'is-active': tab === 0 }),
-          moment: m,
-          onChange: this.props.onChange
-        }),
-        React.createElement(Time, {
-          className: cx('tab', { 'is-active': tab === 1 }),
-          moment: m,
-          onChange: this.props.onChange
-        })
-      ),
-      React.createElement(
-        'button',
-        { className: 'im-btn btn-save ion-checkmark' },
-        'Save'
-      )
-    );
-  },
-  handleClick: function handleClick(tab) {
-    this.setState({ tab: tab });
-  }
-});
+!function(e){function t(s){if(n[s])return n[s].exports;var r=n[s]={exports:{},id:s,loaded:!1};return e[s].call(r.exports,r,r.exports,t),r.loaded=!0,r.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";e.exports=n(11)},function(e,t){e.exports=React},function(e,t,n){var s,r;/*!
+	  Copyright (c) 2015 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+!function(){"use strict";function n(){for(var e="",t=0;t<arguments.length;t++){var s=arguments[t];if(s){var r=typeof s;if("string"===r||"number"===r)e+=" "+s;else if(Array.isArray(s))e+=" "+n.apply(null,s);else if("object"===r)for(var i in s)a.call(s,i)&&s[i]&&(e+=" "+i)}}return e.substr(1)}var a={}.hasOwnProperty;"undefined"!=typeof e&&e.exports?e.exports=n:(s=[],r=function(){return n}.apply(t,s),!(void 0!==r&&(e.exports=r)))}()},function(e,t){e.exports=moment},function(e,t){e.exports=ReactDOM},function(e,t){e.exports=function(e){var t={},n=arguments[1];if("string"==typeof n){n={};for(var s=1;s<arguments.length;s++)n[arguments[s]]=!0}for(var r in e)n[r]||(t[r]=e[r]);return t}},function(e,t,n){"use strict";var s=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var s in n)Object.prototype.hasOwnProperty.call(n,s)&&(e[s]=n[s])}return e},r=n(8),a=n(5),i=n(1),o=n(4);e.exports=i.createClass({displayName:"InputSlider",propTypes:{axis:i.PropTypes.string,x:i.PropTypes.number,xmax:i.PropTypes.number,xmin:i.PropTypes.number,y:i.PropTypes.number,ymax:i.PropTypes.number,ymin:i.PropTypes.number},getDefaultProps:function(){return{axis:"x",xmin:0,ymin:0}},render:function(){var e=this.props.axis,t=a(this.props,"axis","x","y","xmin","xmax","ymin","ymax","onChange","onDragEnd","className","onClick"),n=this.getPosition(),o={};return"x"===e&&(o.width=n.left),"y"===e&&(o.height=n.top),t.className=r("u-slider","u-slider-"+e,this.props.className),i.createElement("div",s({},t,{onClick:this.handleClick}),i.createElement("div",{className:"value",style:o}),i.createElement("div",{className:"handle",ref:"handle",onTouchStart:this.handleMouseDown,onMouseDown:this.handleMouseDown,onClick:function(e){e.stopPropagation(),e.nativeEvent.stopImmediatePropagation()},style:n}))},getClientPosition:function(e){var t=e.touches;if(t&&t.length){var n=t[0];return{x:n.clientX,y:n.clientY}}return{x:e.clientX,y:e.clientY}},getPosition:function(){var e=(this.props.y-this.props.ymin)/(this.props.ymax-this.props.ymin)*100,t=(this.props.x-this.props.xmin)/(this.props.xmax-this.props.xmin)*100;return e>100&&(e=100),0>e&&(e=0),"x"===this.props.axis&&(e=0),e+="%",t>100&&(t=100),0>t&&(t=0),"y"===this.props.axis&&(t=0),t+="%",{top:e,left:t}},change:function(e,t){if(this.props.onChange){var n=o.findDOMNode(this).getBoundingClientRect(),s=n.width,r=n.height,a=e.left,i=e.top,c=this.props.axis;0>a&&(a=0),a>s&&(a=s),0>i&&(i=0),i>r&&(i=r);var l=0,m=0;("x"===c||"xy"===c)&&(l=a/s*(this.props.xmax-this.props.xmin)+this.props.xmin),("y"===c||"xy"===c)&&(m=i/r*(this.props.ymax-this.props.ymin)+this.props.ymin),this.props.onChange({x:l,y:m})}},handleMouseDown:function(e){e.preventDefault();var t=this.refs.handle,n=this.getClientPosition(e);this.start={x:t.offsetLeft,y:t.offsetTop},this.offset={x:n.x,y:n.y},document.addEventListener("mousemove",this.handleDrag),document.addEventListener("mouseup",this.handleDragEnd),document.addEventListener("touchmove",this.handleDrag),document.addEventListener("touchend",this.handleDragEnd),document.addEventListener("touchcancel",this.handleDragEnd)},getPos:function(e){var t=this.getClientPosition(e),n=(o.findDOMNode(this).getBoundingClientRect(),t.x+this.start.x-this.offset.x),s=t.y+this.start.y-this.offset.y;return{left:n,top:s}},handleDrag:function(e){e.preventDefault(),this.change(this.getPos(e))},handleDragEnd:function(e){e.preventDefault(),document.removeEventListener("mousemove",this.handleDrag),document.removeEventListener("mouseup",this.handleDragEnd),document.removeEventListener("touchmove",this.handleDrag),document.removeEventListener("touchend",this.handleDragEnd),document.removeEventListener("touchcancel",this.handleDragEnd),this.props.onDragEnd&&this.props.onDragEnd()},handleClick:function(e){var t=this.getClientPosition(e),n=o.findDOMNode(this).getBoundingClientRect();this.change({left:t.x-n.left,top:t.y-n.top},!0)}})},function(e,t,n){"use strict";e.exports=n(6)},function(e,t,n){var s,r;/*!
+	  Copyright (c) 2015 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+!function(){"use strict";function n(){for(var e="",t=0;t<arguments.length;t++){var s=arguments[t];if(s){var r=typeof s;if("string"===r||"number"===r)e+=" "+s;else if(Array.isArray(s))e+=" "+n.apply(null,s);else if("object"===r)for(var i in s)a.call(s,i)&&s[i]&&(e+=" "+i)}}return e.substr(1)}var a={}.hasOwnProperty;"undefined"!=typeof e&&e.exports?e.exports=n:(s=[],r=function(){return n}.apply(t,s),!(void 0!==r&&(e.exports=r)))}()},function(e,t,n){"use strict";var s=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var s in n)Object.prototype.hasOwnProperty.call(n,s)&&(e[s]=n[s])}return e},r=n(2),a=(n(3),n(1)),i=n(12);n(10);var o=a.createClass({displayName:"Day",render:function(){var e=this.props.i,t=this.props.w,n=0===t&&e>7,i=t>=4&&14>=e,o=r({"prev-month":n,"next-month":i,"current-day":!n&&!i&&e===this.props.d});return a.createElement("td",s({className:o},this.props),e)}});e.exports=a.createClass({displayName:"Calendar",render:function(){var e=this,t=this.props.moment,n=t.date(),s=t.clone().subtract(1,"month").endOf("month").date(),c=t.clone().date(1).day(),l=t.clone().endOf("month").date(),m=[].concat(i(s-c+1,s),i(1,l),i(1,42-l-c)),p=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];return a.createElement("div",{className:r("m-calendar",this.props.className)},a.createElement("div",{className:"toolbar"},a.createElement("button",{className:"prev-month",onClick:this.prevMonth},a.createElement("i",{className:"ion-ios-arrow-left"})),a.createElement("span",{className:"current-date"},t.format("MMMM YYYY")),a.createElement("button",{className:"next-month",onClick:this.nextMonth},a.createElement("i",{className:"ion-ios-arrow-right"}))),a.createElement("table",null,a.createElement("thead",null,a.createElement("tr",null,p.map(function(e,t){return a.createElement("td",{key:t},e)}))),a.createElement("tbody",null,m.chunk(7).map(function(t,s){return a.createElement("tr",{key:s},t.map(function(t){return a.createElement(o,{key:t,i:t,d:n,w:s,onClick:e.selectDate.bind(null,t)})}))}))))},selectDate:function(e){this.props.onChange(this.props.moment.date(e))},prevMonth:function(){this.props.onChange(this.props.moment.subtract(1,"month"))},nextMonth:function(){this.props.onChange(this.props.moment.add(1,"month"))}})},function(e,t){"use strict";Array.prototype.chunk=function(e){var t=this;return[].concat.apply([],t.map(function(n,s){return s%e?[]:[t.slice(s,s+e)]}))}},function(e,t,n){"use strict";var s=n(2),r=(n(3),n(1)),a=n(9),i=n(13);e.exports=r.createClass({displayName:"InputMoment",getInitialState:function(){return{tab:0}},render:function(){var e=this.state.tab,t=this.props.moment;return r.createElement("div",{className:"m-input-moment"},r.createElement("div",{className:"options"},r.createElement("button",{className:s("ion-calendar im-btn",{"is-active":0===e}),onClick:this.handleClickTab.bind(null,0)},"Date"),r.createElement("button",{className:s("ion-clock im-btn",{"is-active":1===e}),onClick:this.handleClickTab.bind(null,1)},"Time")),r.createElement("div",{className:"tabs"},r.createElement(a,{className:s("tab",{"is-active":0===e}),moment:t,onChange:this.props.onChange}),r.createElement(i,{className:s("tab",{"is-active":1===e}),moment:t,onChange:this.props.onChange})),r.createElement("button",{className:"im-btn btn-save ion-checkmark",onClick:this.handleSave},"Save"))},handleClickTab:function(e){this.setState({tab:e})},handleSave:function(){this.props.onSave&&this.props.onSave()}})},function(e,t){"use strict";e.exports=function(e,t){for(var n=[],s=e;t>=s;s++)n.push(s);return n}},function(e,t,n){"use strict";var s=n(2),r=n(1),a=n(7);e.exports=r.createClass({displayName:"Time",render:function(){var e=this.props.moment;return r.createElement("div",{className:s("m-time",this.props.className)},r.createElement("div",{className:"showtime"},r.createElement("span",{className:"time"},e.hour()),r.createElement("span",{className:"separater"},":"),r.createElement("span",{className:"time"},e.format("mm"))),r.createElement("div",{className:"sliders"},r.createElement("div",{className:"time-text"},"Hours:"),r.createElement(a,{className:"u-slider-time",xmin:0,xmax:23,x:e.hour(),onChange:this.changeHours}),r.createElement("div",{className:"time-text"},"Minutes:"),r.createElement(a,{className:"u-slider-time",xmin:0,xmax:59,x:e.minute(),onChange:this.changeMinutes})))},changeHours:function(e){var t=this.props.moment;t.hours(parseInt(e.x,10)),this.props.onChange(t)},changeMinutes:function(e){var t=this.props.moment;t.minutes(parseInt(e.x,10)),this.props.onChange(t)}})}]);
+//# sourceMappingURL=input-moment.js.map

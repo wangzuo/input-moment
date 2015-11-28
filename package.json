@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "node_modules/.bin/webpack-dev-server -c --port=8888",
-    "build": "make",
+    "build-js": "node_modules/.bin/webpack -p",
+    "build-css": "node_modules/.bin/lessc --clean-css src/less/input-moment.less dist/input-moment.css",
+    "build": "npm run build-js && npm run build-css",
     "deploy": "npm run build && github-pages-deploy",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm dist/* && rm example/bundle*"
   },
   "github-pages-deploy": {
     "src": "example"
@@ -26,8 +29,10 @@
     "babel-preset-react": "^6.1.2",
     "css-loader": "^0.21.0",
     "github-pages-deploy": "0.0.3",
+    "json-loader": "^0.5.4",
     "less": "^2.5.3",
     "less-loader": "^2.2.1",
+    "less-plugin-clean-css": "^1.5.1",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.3",
     "webpack-dev-server": "^1.14.0"

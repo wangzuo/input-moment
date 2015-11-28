@@ -11,7 +11,7 @@ module.exports = React.createClass({
     return (
       <div className={cx('m-time', this.props.className)}>
         <div className="showtime">
-          <span className="time">{m.format('hh')}</span>
+          <span className="time">{m.hour()}</span>
           <span className="separater">:</span>
           <span className="time">{m.format('mm')}</span>
         </div>

@@ -10,10 +10,12 @@ var Day = React.createClass({
   render() {
     var i = this.props.i;
     var w = this.props.w;
+    var prevMonth = (w === 0 && i > 7);
+    var nextMonth = (w >= 4 && i <= 14);
     var cn = cx({
-      'prev-month': w === 0 && i > 7,
-      'next-month': w >= 4 && i <= 14,
-      'current-day': i === this.props.d
+      'prev-month': prevMonth,
+      'next-month': nextMonth,
+      'current-day': !prevMonth && !nextMonth && (i === this.props.d)
     });
 
     return <td className={cn} {... this.props}>{i}</td>;
@@ -60,7 +62,11 @@ module.exports = React.createClass({
           <tbody>
             {days.chunk(7).map((row, w) => (
               <tr key={w}>
-                {row.map((i) => <Day key={i} i={i} d={d} w={w} onClick={this.selectDate.bind(null, i)}/>)}
+                {row.map((i) => (
+                  <Day key={i} i={i} d={d} w={w}
+                    onClick={this.selectDate.bind(null, i)}
+                  />
+                ))}
               </tr>
             ))}
           </tbody>

@@ -5,6 +5,7 @@ var moment = require('moment');
 var React = require('react');
 var ReactDOM = require('react-dom');
 var InputMoment = require('../src/input-moment');
+var packageJson = require('../package.json');
 
 var App = React.createClass({
   displayName: 'App',
@@ -18,9 +19,19 @@ var App = React.createClass({
   render() {
     return (
       <div className="app">
-        <h1>input-moment</h1>
-        <div>{this.state.m.format('YYYY MMMM Do, h:mm')}</div>
-        <InputMoment moment={this.state.m} onChange={this.handleChange}/>
+        <h1>{packageJson.name}</h1>
+        <h2>{packageJson.description}</h2>
+        <div className="input">
+          <input
+            type="text"
+            value={this.state.m.format('llll')}
+            readOnly
+          />
+        </div>
+        <InputMoment
+          moment={this.state.m}
+          onChange={this.handleChange}
+        />
       </div>
     );
   },
