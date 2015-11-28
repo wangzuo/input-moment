@@ -31,6 +31,7 @@ var App = React.createClass({
         <InputMoment
           moment={this.state.m}
           onChange={this.handleChange}
+          onSave={this.handleSave}
         />
       </div>
     );
@@ -38,6 +39,10 @@ var App = React.createClass({
 
   handleChange(m) {
     this.setState({m: m});
+  },
+
+  handleSave() {
+    console.log('saved');
   }
 });
 
