@@ -1,7 +1,7 @@
 {
   "name": "input-moment",
   "version": "0.0.1",
-  "description": "React input moment",
+  "description": "React datetime picker powered by momentjs",
   "main": "index.js",
   "scripts": {
     "start": "node_modules/.bin/webpack-dev-server -c --port=8888",
@@ -54,6 +54,7 @@
     "react-component",
     "input",
     "datetime",
+    "picker",
     "moment"
   ],
   "bugs": {
