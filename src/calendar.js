@@ -43,11 +43,11 @@ module.exports = React.createClass({
     return (
       <div className={cx('m-calendar', this.props.className)}>
         <div className="toolbar">
-          <button className="prev-month" onClick={this.prevMonth}>
+          <button type="button" className="prev-month" onClick={this.prevMonth}>
             <i className="ion-ios-arrow-left"/>
           </button>
           <span className="current-date">{m.format('MMMM YYYY')}</span>
-          <button className="next-month" onClick={this.nextMonth}>
+          <button type="button" className="next-month" onClick={this.nextMonth}>
             <i className="ion-ios-arrow-right"/>
           </button>
         </div>
@@ -87,11 +87,13 @@ module.exports = React.createClass({
     this.props.onChange(m);
   },
 
-  prevMonth() {
+  prevMonth(e) {
+    e.preventDefault();
     this.props.onChange(this.props.moment.subtract(1, 'month'));
   },
 
-  nextMonth() {
+  nextMonth(e) {
+    e.preventDefault();
     this.props.onChange(this.props.moment.add(1, 'month'));
   }
 });
