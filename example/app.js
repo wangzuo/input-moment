@@ -21,6 +21,7 @@ var App = React.createClass({
       <div className="app">
         <h1>{packageJson.name}</h1>
         <h2>{packageJson.description}</h2>
+        <form>
         <div className="input">
           <input
             type="text"
@@ -33,6 +34,7 @@ var App = React.createClass({
           onChange={this.handleChange}
           onSave={this.handleSave}
         />
+        </form>
       </div>
     );
   },
