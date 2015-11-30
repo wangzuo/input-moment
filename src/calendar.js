@@ -2,7 +2,7 @@ var cx = require('classnames');
 var moment = require('moment');
 var React = require('react');
 var range = require('./range');
-require('./chunk');
+var chunk = require('lodash/array/chunk');
 
 var Day = React.createClass({
   displayName: 'Day',
@@ -60,7 +60,7 @@ module.exports = React.createClass({
           </thead>
 
           <tbody>
-            {days.chunk(7).map((row, w) => (
+            {chunk(days, 7).map((row, w) => (
               <tr key={w}>
                 {row.map((i) => (
                   <Day key={i} i={i} d={d} w={w}
