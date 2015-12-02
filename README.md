@@ -3,6 +3,8 @@ React datetime picker powered by [momentjs](http://momentjs.com)
 
 The design is from https://dribbble.com/shots/1439965-Due-Date-and-Time-Picker.
 
+The icon is from [ionicons](http://ionicons.com/).
+
 ### Installation
 ``` sh
 npm i input-moment --save
