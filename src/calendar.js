@@ -2,6 +2,7 @@ var cx = require('classnames');
 var moment = require('moment');
 var React = require('react');
 var range = require('./range');
+var range = require('lodash/utility/range');
 var chunk = require('lodash/array/chunk');
 
 var Day = React.createClass({
@@ -33,9 +34,9 @@ module.exports = React.createClass({
     var d3 = m.clone().endOf('month').date();
 
     var days = [].concat(
-      range(d1-d2+1, d1),
-      range(1, d3),
-      range(1, 42-d3-d2)
+      range(d1-d2+1, d1+1),
+      range(1, d3+1),
+      range(1, 42-d3-d2+1)
     );
 
     var weeks = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
