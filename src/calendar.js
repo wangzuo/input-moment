@@ -1,7 +1,6 @@
 var cx = require('classnames');
 var moment = require('moment');
 var React = require('react');
-var range = require('./range');
 var range = require('lodash/utility/range');
 var chunk = require('lodash/array/chunk');
 
