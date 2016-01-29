@@ -33,6 +33,8 @@ module.exports = React.createClass({
             className={cx('tab', {'is-active': tab === 0})}
             moment={m}
             onChange={this.props.onChange}
+            prevMonthIcon={this.props.prevMonthIcon}
+            nextMonthIcon={this.props.nextMonthIcon}
           />
           <Time
             className={cx('tab', {'is-active': tab === 1})}

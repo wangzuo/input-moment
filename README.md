@@ -21,6 +21,8 @@ http://wangzuo.github.io/input-moment
   moment={this.state.moment}
   onChange={this.handleChange}
   onSave={this.handleSave}
+  prevMonthIcon='ion-ios-arrow-left'
+  nextMonthIcon='ion-ios-arrow-right'
 />
 ```
 Check [app.js](https://github.com/wangzuo/input-moment/blob/master/example/app.js) for a working example.
