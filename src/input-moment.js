@@ -13,6 +13,13 @@ module.exports = React.createClass({
     };
   },
 
+  getDefaultProps() {
+    return {
+      prevMonthIcon: 'ion-ios-arrow-left',
+      nextMonthIcon: 'ion-ios-arrow-right'
+    };
+  },
+
   render() {
     var tab = this.state.tab;
     var m = this.props.moment;
