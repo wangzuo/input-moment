@@ -9,12 +9,13 @@ module.exports = React.createClass({
 
   getInitialState() {
     return {
-      tab: 0
+      tab: this.props.initialTab
     };
   },
 
   getDefaultProps() {
     return {
+      initialTab: 'date',
       prevMonthIcon: 'ion-ios-arrow-left',
       nextMonthIcon: 'ion-ios-arrow-right'
     };
@@ -27,24 +28,24 @@ module.exports = React.createClass({
     return (
       <div className="m-input-moment">
         <div className="options">
-          <button type="button" className={cx('ion-calendar im-btn', {'is-active': tab === 0})} onClick={this.handleClickTab.bind(null, 0)}>
+          <button type="button" className={cx('ion-calendar im-btn', {'is-active': tab === 'date'})} onClick={this.handleClickTab.bind(null, 'date')}>
             Date
           </button>
-          <button type="button" className={cx('ion-clock im-btn', {'is-active': tab === 1})} onClick={this.handleClickTab.bind(null, 1)}>
+          <button type="button" className={cx('ion-clock im-btn', {'is-active': tab === 'time'})} onClick={this.handleClickTab.bind(null, 'time')}>
             Time
           </button>
         </div>
 
         <div className="tabs">
           <Calendar
-            className={cx('tab', {'is-active': tab === 0})}
+            className={cx('tab', {'is-active': tab === 'date'})}
             moment={m}
             onChange={this.props.onChange}
             prevMonthIcon={this.props.prevMonthIcon}
             nextMonthIcon={this.props.nextMonthIcon}
           />
           <Time
-            className={cx('tab', {'is-active': tab === 1})}
+            className={cx('tab', {'is-active': tab === 'time'})}
             moment={m}
             onChange={this.props.onChange}
           />
