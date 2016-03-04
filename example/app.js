@@ -30,7 +30,6 @@ var App = React.createClass({
           />
         </div>
         <InputMoment
-          timeOnly
           moment={this.state.m}
           onChange={this.handleChange}
           onSave={this.handleSave}
