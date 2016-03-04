@@ -1,8 +1,6 @@
-var cx = require('classnames');
 var moment = require('moment');
 var React = require('react');
-var Calendar = require('./calendar');
-var Time = require('./time');
+var Tabs = require('./tabs');
 var Options = require('./options');
 
 module.exports = React.createClass({
@@ -37,20 +35,15 @@ module.exports = React.createClass({
           timeOnly={this.props.timeOnly}
         />
 
-        <div className="tabs">
-          <Calendar
-            className={cx('tab', {'is-active': tab === 0})}
-            moment={m}
-            onChange={this.props.onChange}
-            prevMonthIcon={this.props.prevMonthIcon}
-            nextMonthIcon={this.props.nextMonthIcon}
-          />
-          <Time
-            className={cx('tab', {'is-active': tab === 1})}
-            moment={m}
-            onChange={this.props.onChange}
-          />
-        </div>
+        <Tabs
+          tab={tab}
+          m={m}
+          dateOnly={this.props.dateOnly}
+          timeOnly={this.props.timeOnly}
+          prevMonthIcon={this.props.prevMonthIcon}
+          nextMonthIcon={this.props.nextMonthIcon}
+          onChange={this.props.onChange}
+        />
 
         <button type="button" className="im-btn btn-save ion-checkmark"
           onClick={this.handleSave}>
