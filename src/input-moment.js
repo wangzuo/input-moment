@@ -3,6 +3,7 @@ var moment = require('moment');
 var React = require('react');
 var Calendar = require('./calendar');
 var Time = require('./time');
+var Options = require('./options');
 
 module.exports = React.createClass({
   displayName: 'InputMoment',
@@ -16,7 +17,9 @@ module.exports = React.createClass({
   getDefaultProps() {
     return {
       prevMonthIcon: 'ion-ios-arrow-left',
-      nextMonthIcon: 'ion-ios-arrow-right'
+      nextMonthIcon: 'ion-ios-arrow-right',
+      dateOnly: false,
+      timeOnly: false
     };
   },
 
@@ -26,14 +29,13 @@ module.exports = React.createClass({
 
     return (
       <div className="m-input-moment">
-        <div className="options">
-          <button type="button" className={cx('ion-calendar im-btn', {'is-active': tab === 0})} onClick={this.handleClickTab.bind(null, 0)}>
-            Date
-          </button>
-          <button type="button" className={cx('ion-clock im-btn', {'is-active': tab === 1})} onClick={this.handleClickTab.bind(null, 1)}>
-            Time
-          </button>
-        </div>
+
+        <Options
+          tab={tab}
+          handleClickTab={this.handleClickTab}
+          dateOnly={this.props.dateOnly}
+          timeOnly={this.props.timeOnly}
+        />
 
         <div className="tabs">
           <Calendar
