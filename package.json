@@ -1,13 +1,11 @@
 {
   "name": "hb-input-moment",
   "version": "0.1.2",
-  "description": "React datetime picker powered by momentjs",
-  "main": "lib/index.js",
+  "description": "[HIVEBEAT FORK] React datetime picker powered by momentjs",
+  "main": "index.js",
   "scripts": {
     "start": "node_modules/.bin/webpack-dev-server -c --port=8888",
-    "build-js": "node_modules/.bin/webpack -p",
-    "build-css": "node_modules/.bin/lessc --clean-css src/less/input-moment.less dist/input-moment.css",
-    "build": "npm run build-js && npm run build-css",
+    "build": "./build.sh",
     "deploy": "npm run build && github-pages-deploy",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm dist/* && rm example/bundle*"
@@ -38,9 +36,6 @@
     "blacklist": "^1.1.2",
     "classnames": "^2.2.0",
     "lodash": "^3.10.1",
-    "moment": "^2.12.0",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7",
     "react-input-slider": "^1.5.0"
   },
   "directories": {
