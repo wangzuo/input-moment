@@ -1,3 +1,5 @@
+**THIS IS A FORK OF [input-moment](https://github.com/wangzuo/input-moment) USED AT HIVEBEAT**
+
 # input-moment
 React datetime picker powered by [momentjs](http://momentjs.com)
 

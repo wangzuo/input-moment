@@ -1,8 +1,8 @@
 {
-  "name": "input-moment",
-  "version": "0.1.0",
+  "name": "hb-input-moment",
+  "version": "0.1.2",
   "description": "React datetime picker powered by momentjs",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "start": "node_modules/.bin/webpack-dev-server -c --port=8888",
     "build-js": "node_modules/.bin/webpack -p",
@@ -12,10 +12,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm dist/* && rm example/bundle*"
   },
-  "github-pages-deploy": {
-    "src": "example"
-  },
-  "author": "Wang Zuo",
+  "author": "Hivebeat",
   "license": "ISC",
   "peerDependencies": {
     "react": "^0.14.0",
@@ -51,7 +48,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wangzuo/input-moment.git"
+    "url": "git+https://github.com/Hivebeat/input-moment.git"
   },
   "keywords": [
     "react",
@@ -62,7 +59,7 @@
     "moment"
   ],
   "bugs": {
-    "url": "https://github.com/wangzuo/input-moment/issues"
+    "url": "https://github.com/Hivebeat/input-moment/issues"
   },
-  "homepage": "https://github.com/wangzuo/input-moment#readme"
+  "homepage": "https://github.com/Hivebeat/input-moment#readme"
 }
