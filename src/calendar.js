@@ -46,7 +46,7 @@ module.exports = React.createClass({
           <button type="button" className="prev-month" onClick={this.prevMonth}>
             <i className={this.props.prevMonthIcon}/>
           </button>
-          <span className="current-date">{m.locale(this.props.locale)format('MMMM YYYY')}</span>
+          <span className="current-date">{m.locale(this.props.locale).format('MMMM YYYY')}</span>
           <button type="button" className="next-month" onClick={this.nextMonth}>
             <i className={this.props.nextMonthIcon}/>
           </button>
