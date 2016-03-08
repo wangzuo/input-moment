@@ -16,6 +16,8 @@ module.exports = React.createClass({
     return {
       prevMonthIcon: 'ion-ios-arrow-left',
       nextMonthIcon: 'ion-ios-arrow-right',
+      weeks: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      locale: 'en',
       dateOnly: false,
       timeOnly: false
     };
@@ -38,6 +40,8 @@ module.exports = React.createClass({
         <Tabs
           tab={tab}
           m={m}
+          locale={this.props.locale}
+          weeks={this.props.weeks}
           dateOnly={this.props.dateOnly}
           timeOnly={this.props.timeOnly}
           prevMonthIcon={this.props.prevMonthIcon}

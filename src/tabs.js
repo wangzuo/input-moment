@@ -9,12 +9,16 @@ module.exports = React.createClass({
     var timeOnly = this.props.timeOnly;
     var tab = this.props.tab;
     var m = this.props.m;
+    var locale = this.props.locale;
+    var weeks = this.props.weeks;
 
     return (
       <div className="tabs">
         <Calendar
           className={cx('tab', {'is-active': (tab === 0 && !timeOnly) || dateOnly})}
           moment={m}
+          locale={locale}
+          weeks={weeks}
           onChange={this.props.onChange}
           prevMonthIcon={this.props.prevMonthIcon}
           nextMonthIcon={this.props.nextMonthIcon}
