@@ -18,6 +18,7 @@ module.exports = React.createClass({
       nextMonthIcon: 'ion-ios-arrow-right',
       weeks: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       locale: 'en',
+      saveString: 'Save',
       dateOnly: false,
       timeOnly: false
     };
@@ -51,7 +52,7 @@ module.exports = React.createClass({
 
         <button type="button" className="im-btn btn-save ion-checkmark"
           onClick={this.handleSave}>
-          Save
+          {this.props.saveString}
         </button>
       </div>
     );
