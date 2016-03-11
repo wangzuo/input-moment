@@ -17,7 +17,7 @@ module.exports = {
   },
   externals: {
     'react': 'React',
-    'reactdom': 'ReactDOM',
+    'react-dom': 'ReactDOM',
     'moment': 'moment'
   },
   devtool: 'source-map'
