@@ -1,8 +1,7 @@
-var cx = require('classnames');
 var moment = require('moment');
 var React = require('react');
-var Calendar = require('./calendar');
-var Time = require('./time');
+var Tabs = require('./tabs');
+var Options = require('./options');
 
 module.exports = React.createClass({
   displayName: 'InputMoment',
@@ -16,7 +15,12 @@ module.exports = React.createClass({
   getDefaultProps() {
     return {
       prevMonthIcon: 'ion-ios-arrow-left',
-      nextMonthIcon: 'ion-ios-arrow-right'
+      nextMonthIcon: 'ion-ios-arrow-right',
+      weeks: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      locale: 'en',
+      saveString: 'Save',
+      dateOnly: false,
+      timeOnly: false
     };
   },
 
@@ -26,33 +30,29 @@ module.exports = React.createClass({
 
     return (
       <div className="m-input-moment">
-        <div className="options">
-          <button type="button" className={cx('ion-calendar im-btn', {'is-active': tab === 0})} onClick={this.handleClickTab.bind(null, 0)}>
-            Date
-          </button>
-          <button type="button" className={cx('ion-clock im-btn', {'is-active': tab === 1})} onClick={this.handleClickTab.bind(null, 1)}>
-            Time
-          </button>
-        </div>
 
-        <div className="tabs">
-          <Calendar
-            className={cx('tab', {'is-active': tab === 0})}
-            moment={m}
-            onChange={this.props.onChange}
-            prevMonthIcon={this.props.prevMonthIcon}
-            nextMonthIcon={this.props.nextMonthIcon}
-          />
-          <Time
-            className={cx('tab', {'is-active': tab === 1})}
-            moment={m}
-            onChange={this.props.onChange}
-          />
-        </div>
+        <Options
+          tab={tab}
+          handleClickTab={this.handleClickTab}
+          dateOnly={this.props.dateOnly}
+          timeOnly={this.props.timeOnly}
+        />
+
+        <Tabs
+          tab={tab}
+          m={m}
+          locale={this.props.locale}
+          weeks={this.props.weeks}
+          dateOnly={this.props.dateOnly}
+          timeOnly={this.props.timeOnly}
+          prevMonthIcon={this.props.prevMonthIcon}
+          nextMonthIcon={this.props.nextMonthIcon}
+          onChange={this.props.onChange}
+        />
 
         <button type="button" className="im-btn btn-save ion-checkmark"
           onClick={this.handleSave}>
-          Save
+          {this.props.saveString}
         </button>
       </div>
     );
