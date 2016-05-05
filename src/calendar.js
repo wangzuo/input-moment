@@ -3,6 +3,7 @@ var moment = require('moment');
 var React = require('react');
 var range = require('lodash/utility/range');
 var chunk = require('lodash/array/chunk');
+var YearSelector = require('./year-selector');
 
 var Day = React.createClass({
   displayName: 'Day',
@@ -46,7 +47,17 @@ module.exports = React.createClass({
           <button type="button" className="prev-month" onClick={this.prevMonth}>
             <i className={this.props.prevMonthIcon}/>
           </button>
-          <span className="current-date">{m.locale(this.props.locale).format('MMMM YYYY')}</span>
+          <span className="current-date">
+            {m.locale(this.props.locale).format('MMMM')}
+            &nbsp;
+            <YearSelector
+              toYear='1950'
+              locale={this.props.locale}
+              onChange={this.changeYear}
+              selectedYear={m.locale(this.props.locale).format('YYYY')}
+              fromYear={moment().locale(this.props.locale).format('YYYY')}
+            />
+          </span>
           <button type="button" className="next-month" onClick={this.nextMonth}>
             <i className={this.props.nextMonthIcon}/>
           </button>
@@ -85,6 +96,10 @@ module.exports = React.createClass({
     if(nextMonth) m.add(1, 'month');
 
     this.props.onChange(m);
+  },
+
+  changeYear(e) {
+    this.props.onChange(this.props.moment.year(e.target.value));
   },
 
   prevMonth(e) {
