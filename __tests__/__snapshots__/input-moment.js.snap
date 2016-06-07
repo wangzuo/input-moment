@@ -84,43 +84,43 @@ exports[`render 1`] = `
         <tbody>
           <tr>
             <td
-              className="prev-month"
+              className="prev-month valid"
               onClick={[Function]}
             >
               29
             </td>
             <td
-              className="prev-month"
+              className="prev-month valid"
               onClick={[Function]}
             >
               30
             </td>
             <td
-              className="prev-month"
+              className="prev-month valid"
               onClick={[Function]}
             >
               31
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               1
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               2
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               3
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               4
@@ -128,43 +128,43 @@ exports[`render 1`] = `
           </tr>
           <tr>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               5
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               6
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               7
             </td>
             <td
-              className="current-day"
+              className="current-day valid"
               onClick={[Function]}
             >
               8
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               9
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               10
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               11
@@ -172,43 +172,43 @@ exports[`render 1`] = `
           </tr>
           <tr>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               12
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               13
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               14
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               15
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               16
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               17
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               18
@@ -216,43 +216,43 @@ exports[`render 1`] = `
           </tr>
           <tr>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               19
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               20
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               21
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               22
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               23
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               24
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               25
@@ -260,43 +260,43 @@ exports[`render 1`] = `
           </tr>
           <tr>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               26
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               27
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               28
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               29
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               30
             </td>
             <td
-              className=""
+              className="valid"
               onClick={[Function]}
             >
               31
             </td>
             <td
-              className="next-month"
+              className="next-month valid"
               onClick={[Function]}
             >
               1
@@ -304,43 +304,43 @@ exports[`render 1`] = `
           </tr>
           <tr>
             <td
-              className="next-month"
+              className="next-month valid"
               onClick={[Function]}
             >
               2
             </td>
             <td
-              className="next-month"
+              className="next-month valid"
               onClick={[Function]}
             >
               3
             </td>
             <td
-              className="next-month"
+              className="next-month valid"
               onClick={[Function]}
             >
               4
             </td>
             <td
-              className="next-month"
+              className="next-month valid"
               onClick={[Function]}
             >
               5
             </td>
             <td
-              className="next-month"
+              className="next-month valid"
               onClick={[Function]}
             >
               6
             </td>
             <td
-              className="next-month"
+              className="next-month valid"
               onClick={[Function]}
             >
               7
             </td>
             <td
-              className="next-month"
+              className="next-month valid"
               onClick={[Function]}
             >
               8
