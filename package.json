@@ -4,26 +4,13 @@
   "description": "React datetime picker powered by momentjs",
   "main": "index.js",
   "scripts": {
-    "start": "node_modules/.bin/webpack-dev-server -c --port=8888",
-    "build-js": "node_modules/.bin/webpack -p",
-    "build-css": "node_modules/.bin/lessc --clean-css src/less/input-moment.less dist/input-moment.css",
+    "start": "webpack-dev-server -c --port=8888",
+    "build-js": "babel src --out-dir lib && webpack -p",
+    "build-css": "lessc --clean-css src/less/input-moment.less dist/input-moment.css",
     "build": "npm run build-js && npm run build-css",
     "deploy": "npm run build && github-pages-deploy",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm dist/* && rm example/bundle*"
-  },
-  "browserify": {
-    "transform": [
-      [
-        "babelify",
-        {
-          "presets": [
-            "es2015",
-            "react"
-          ]
-        }
-      ]
-    ]
   },
   "github-pages-deploy": {
     "src": "example"
@@ -51,13 +38,10 @@
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
-    "blacklist": "^1.1.2",
+    "blacklist": "^1.1.4",
     "classnames": "^2.2.0",
     "lodash": "^3.10.1",
     "react-input-slider": "^1.5.0"
-  },
-  "directories": {
-    "example": "example"
   },
   "repository": {
     "type": "git",
