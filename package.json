@@ -30,7 +30,7 @@
     "css-loader": "^0.21.0",
     "github-pages-deploy": "0.0.3",
     "json-loader": "^0.5.4",
-    "less": "^2.5.3",
+    "less": "^2.7.1",
     "less-loader": "^2.2.1",
     "less-plugin-clean-css": "^1.5.1",
     "style-loader": "^0.13.0",
