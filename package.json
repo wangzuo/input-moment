@@ -34,7 +34,7 @@
     "less-loader": "^2.2.1",
     "less-plugin-clean-css": "^1.5.1",
     "style-loader": "^0.13.0",
-    "webpack": "^1.12.3",
+    "webpack": "^1.13.3",
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
