@@ -19,7 +19,7 @@
   "license": "ISC",
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0",
-    "react-dom": "^0.14.0 || ^15.0.0",
+    "react-dom": "^15.3.2",
     "moment": "^2.10.6"
   },
   "devDependencies": {
