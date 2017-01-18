@@ -18,9 +18,9 @@
   "author": "Wang Zuo",
   "license": "ISC",
   "peerDependencies": {
+    "moment": "^2.10.6",
     "react": "^0.14.0 || ^15.0.0",
-    "react-dom": "^0.14.0 || ^15.0.0",
-    "moment": "^2.10.6"
+    "react-dom": "^0.14.0 || ^15.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.1.2",
@@ -33,6 +33,8 @@
     "less": "^2.5.3",
     "less-loader": "^2.2.1",
     "less-plugin-clean-css": "^1.5.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.3",
     "webpack-dev-server": "^1.14.0"
