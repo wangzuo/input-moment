@@ -40,11 +40,11 @@ var App = React.createClass({
   },
 
   handleChange(m) {
-    this.setState({m: m});
+    this.setState({ m });
   },
 
   handleSave() {
-    console.log('saved');
+    console.log('saved', this.state.m.format('llll'));
   }
 });
 

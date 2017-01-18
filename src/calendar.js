@@ -1,4 +1,5 @@
 var cx = require('classnames');
+var blacklist = require('blacklist');
 var moment = require('moment');
 var React = require('react');
 var range = require('lodash/utility/range');
@@ -12,13 +13,14 @@ var Day = React.createClass({
     var w = this.props.w;
     var prevMonth = (w === 0 && i > 7);
     var nextMonth = (w >= 4 && i <= 14);
-    var cn = cx({
+    var props = blacklist(this.props, 'i', 'w', 'd', 'className');
+    props.className = cx({
       'prev-month': prevMonth,
       'next-month': nextMonth,
       'current-day': !prevMonth && !nextMonth && (i === this.props.d)
     });
 
-    return <td className={cn} {... this.props}>{i}</td>;
+    return <td {... props}>{i}</td>;
   }
 });
 
