@@ -1,4 +1,5 @@
 var cx = require('classnames');
+var blacklist = require('blacklist');
 var moment = require('moment');
 var React = require('react');
 var Calendar = require('./calendar');
@@ -23,9 +24,11 @@ module.exports = React.createClass({
   render() {
     var tab = this.state.tab;
     var m = this.props.moment;
+    var props = blacklist(this.props, 'className', 'moment', 'prevMonthIcon', 'nextMonthIcon', 'onSave');
+    props.className = cx('m-input-moment', this.props.className);
 
     return (
-      <div className="m-input-moment">
+      <div {...props}>
         <div className="options">
           <button type="button" className={cx('ion-calendar im-btn', {'is-active': tab === 0})} onClick={this.handleClickTab.bind(null, 0)}>
             Date
