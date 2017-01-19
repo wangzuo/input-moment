@@ -21,6 +21,7 @@ http://wangzuo.github.io/input-moment
   moment={this.state.moment}
   onChange={this.handleChange}
   onSave={this.handleSave}
+  initialTab="date" {/* optional, "date" or "time" */}
 />
 ```
 Check [app.js](https://github.com/wangzuo/input-moment/blob/master/example/app.js) for a working example.
