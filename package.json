@@ -1,29 +1,16 @@
 {
   "name": "input-moment",
-  "version": "0.1.0",
+  "version": "0.3.2",
   "description": "React datetime picker powered by momentjs",
   "main": "index.js",
   "scripts": {
-    "start": "node_modules/.bin/webpack-dev-server -c --port=8888",
-    "build-js": "node_modules/.bin/webpack -p",
-    "build-css": "node_modules/.bin/lessc --clean-css src/less/input-moment.less dist/input-moment.css",
+    "start": "webpack-dev-server -c --port=8888",
+    "build-js": "babel src --out-dir lib && webpack -p",
+    "build-css": "lessc --clean-css src/less/input-moment.less dist/input-moment.css",
     "build": "npm run build-js && npm run build-css",
     "deploy": "npm run build && github-pages-deploy",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm dist/* && rm example/bundle*"
-  },
-  "browserify": {
-    "transform": [
-      [
-        "babelify",
-        {
-          "presets": [
-            "es2015",
-            "react"
-          ]
-        }
-      ]
-    ]
   },
   "github-pages-deploy": {
     "src": "example"
@@ -31,9 +18,9 @@
   "author": "Wang Zuo",
   "license": "ISC",
   "peerDependencies": {
-    "react": "^0.14.0",
-    "react-dom": "^0.14.0",
-    "moment": "^2.10.6"
+    "moment": "^2.10.6",
+    "react": "^0.14.0 || ^15.0.0",
+    "react-dom": "^0.14.0 || ^15.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.1.2",
@@ -46,18 +33,17 @@
     "less": "^2.5.3",
     "less-loader": "^2.2.1",
     "less-plugin-clean-css": "^1.5.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.3",
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
-    "blacklist": "^1.1.2",
+    "blacklist": "^1.1.4",
     "classnames": "^2.2.0",
     "lodash": "^3.10.1",
     "react-input-slider": "^1.5.0"
-  },
-  "directories": {
-    "example": "example"
   },
   "repository": {
     "type": "git",
