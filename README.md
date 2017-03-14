@@ -1,4 +1,4 @@
-# input-moment
+# input-moment [![Build Status](https://travis-ci.org/wangzuo/input-moment.svg?branch=master)](https://travis-ci.org/wangzuo/input-moment)
 React datetime picker powered by [momentjs](http://momentjs.com)
 
 The design is from https://dribbble.com/shots/1439965-Due-Date-and-Time-Picker.
