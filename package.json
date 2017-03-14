@@ -35,6 +35,7 @@
     "less": "^2.5.3",
     "less-loader": "^2.2.1",
     "less-plugin-clean-css": "^1.5.1",
+    "moment": "^2.17.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-test-renderer": "^15.4.2",
