@@ -16,15 +16,32 @@ npm i input-moment --save
 http://wangzuo.github.io/input-moment
 
 ### Usage
+
+#### Default
+
 ``` javascript
 <InputMoment
   moment={this.state.moment}
   onChange={this.handleChange}
   onSave={this.handleSave}
-  prevMonthIcon="ion-ios-arrow-left" // default
-  nextMonthIcon="ion-ios-arrow-right" // default
 />
 ```
+
+#### Custom Icon
+
+``` javascript
+<InputMoment
+  moment={this.state.moment}
+  onChange={this.handleChange}
+  onSave={this.handleSave}
+  prevMonthIcon="fa fa-angle-left"
+  nextMonthIcon="fa fa-angle-right"
+  dateIcon="fa fa-calendar-o"
+  timeIcon="fa fa-clock-o"
+  saveIcon="fa fa-check"
+/>
+```
+
 Check [app.js](https://github.com/wangzuo/input-moment/blob/master/example/app.js) for a working example.
 
 ### Development
