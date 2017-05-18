@@ -17,23 +17,27 @@ module.exports = React.createClass({
   getDefaultProps() {
     return {
       prevMonthIcon: 'ion-ios-arrow-left',
-      nextMonthIcon: 'ion-ios-arrow-right'
+      nextMonthIcon: 'ion-ios-arrow-right',
+      dateIcon: 'ion-calendar',
+      timeIcon: 'ion-clock',
+      saveIcon: 'ion-checkmark'
     };
   },
 
   render() {
     var tab = this.state.tab;
     var m = this.props.moment;
-    var props = blacklist(this.props, 'className', 'moment', 'prevMonthIcon', 'nextMonthIcon', 'onSave');
+    var props = blacklist(this.props, 'className', 'moment', 'prevMonthIcon', 'nextMonthIcon', 'onSave', 'dateIcon', 'timeIcon', 'saveIcon');
     props.className = cx('m-input-moment', this.props.className);
+
 
     return (
       <div {...props}>
         <div className="options">
-          <button type="button" className={cx('ion-calendar im-btn', {'is-active': tab === 0})} onClick={this.handleClickTab.bind(null, 0)}>
+          <button type="button" className={cx(`${this.props.dateIcon} im-btn`, {'is-active': tab === 0})} onClick={this.handleClickTab.bind(null, 0)}>
             Date
           </button>
-          <button type="button" className={cx('ion-clock im-btn', {'is-active': tab === 1})} onClick={this.handleClickTab.bind(null, 1)}>
+          <button type="button" className={cx(`${this.props.timeIcon} im-btn`, {'is-active': tab === 1})} onClick={this.handleClickTab.bind(null, 1)}>
             Time
           </button>
         </div>
@@ -53,7 +57,7 @@ module.exports = React.createClass({
           />
         </div>
 
-        <button type="button" className="im-btn btn-save ion-checkmark"
+        <button type="button" className={`im-btn btn-save ${this.props.saveIcon}`}
           onClick={this.handleSave}>
           Save
         </button>
