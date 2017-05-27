@@ -53,10 +53,10 @@ module.exports = React.createClass({
           />
         </div>
 
-        <button type="button" className="im-btn btn-save ion-checkmark"
-          onClick={this.handleSave}>
-          Save
-        </button>
+        {this.handleSave && <button type="button" className="im-btn btn-save ion-checkmark"
+            onClick={this.handleSave}>
+            Save
+        </button>}
       </div>
     );
   },
