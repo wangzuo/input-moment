@@ -12,15 +12,14 @@ var Day = React.createClass({
   displayName: 'Day',
 
   render() {
-    var weekDay = this.props.weekDay;
-    var week = this.props.week;
+    const { week, weekDay, selected } = this.props;
     var prevMonth = (week === 0 && weekDay > 7);
     var nextMonth = (week >= 4 && weekDay <= 14);
     var props = blacklist(this.props, 'weekDay', 'week', 'date', 'className');
     props.className = cx({
       'prev-month': prevMonth,
       'next-month': nextMonth,
-      'current-day': !prevMonth && !nextMonth && (weekDay === this.props.date)
+      'current-day': !prevMonth && !nextMonth && selected,
     });
 
     return <td {... props}>{weekDay}</td>;
@@ -70,9 +69,10 @@ module.exports = React.createClass({
             {chunk(days, 7).map((row, week) => (
               <tr key={week}>
                 {row.map((momentWeekDay) => {
-                  const weekDay = momentWeekDay.format('D');
+                  const weekDay = +momentWeekDay.format('D');
+                  const selected = weekDay === date;
                   return (
-                    <Day key={weekDay} weekDay={weekDay} date={date} week={week}
+                    <Day key={weekDay} weekDay={weekDay} selected={selected} week={week}
                       onClick={this.selectDate.bind(null, weekDay, week)}
                     />
                   )}
