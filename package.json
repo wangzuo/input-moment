@@ -23,6 +23,7 @@
     "react-dom": "^0.14.0 || ^15.0.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.1.2",
     "babel-jest": "^19.0.0",
     "babel-loader": "^6.0.1",
@@ -47,6 +48,7 @@
     "blacklist": "^1.1.4",
     "classnames": "^2.2.0",
     "lodash": "^4.17.4",
+    "moment-range": "^3.0.3",
     "react-input-slider": "^1.5.0"
   },
   "repository": {

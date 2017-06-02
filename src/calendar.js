@@ -1,6 +1,9 @@
 var cx = require('classnames');
 var blacklist = require('blacklist');
-var moment = require('moment');
+var Moment = require('moment');
+var MomentRange = require('moment-range');
+var moment = MomentRange.extendMoment(Moment);
+
 var React = require('react');
 var range = require('lodash/range');
 var chunk = require('lodash/chunk');
@@ -9,18 +12,18 @@ var Day = React.createClass({
   displayName: 'Day',
 
   render() {
-    var i = this.props.i;
-    var w = this.props.w;
-    var prevMonth = (w === 0 && i > 7);
-    var nextMonth = (w >= 4 && i <= 14);
-    var props = blacklist(this.props, 'i', 'w', 'd', 'className');
+    var weekDay = this.props.weekDay;
+    var week = this.props.week;
+    var prevMonth = (week === 0 && weekDay > 7);
+    var nextMonth = (week >= 4 && weekDay <= 14);
+    var props = blacklist(this.props, 'weekDay', 'week', 'date', 'className');
     props.className = cx({
       'prev-month': prevMonth,
       'next-month': nextMonth,
-      'current-day': !prevMonth && !nextMonth && (i === this.props.d)
+      'current-day': !prevMonth && !nextMonth && (weekDay === this.props.date)
     });
 
-    return <td {... props}>{i}</td>;
+    return <td {... props}>{weekDay}</td>;
   }
 });
 
@@ -29,18 +32,17 @@ module.exports = React.createClass({
 
   render() {
     var m = this.props.moment;
-    var d = m.date();
-    var d1 = m.clone().subtract(1, 'month').endOf('month').date();
-    var d2 = m.clone().date(1).day();
-    var d3 = m.clone().endOf('month').date();
+    var date = m.date();
 
-    var days = [].concat(
-      range(d1-d2+1, d1+1),
-      range(1, d3+1),
-      range(1, 42-d3-d2+1)
-    );
-
-    var weeks = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    var dayStart = m.clone().startOf('month').isoWeekday();
+    var dayEnd = m.clone().endOf('month').isoWeekday();
+    var dateStart = dayStart === 1 ? m.clone().startOf('month') : m.clone().startOf('month').subtract(dayStart-1, 'days');
+    var dateEnd = dayEnd === 7 ? m.clone().endOf('month') : m.clone().endOf('month').add(7-dayEnd, 'days');
+    var daysRange = moment.range(dateStart, dateEnd);
+    
+    var days = Array.from(daysRange.by('day'));
+    var weekRange = moment.range(m.clone().startOf('week'), m.clone().endOf('week'));
+    var weeks = Array.from(weekRange.by('day'));
 
     return (
       <div className={cx('m-calendar', this.props.className)}>
@@ -57,18 +59,24 @@ module.exports = React.createClass({
         <table>
           <thead>
             <tr>
-              {weeks.map((w, i) => <td key={i}>{w}</td>)}
+              {weeks.map((day) => { 
+                var dayName = day.format('ddd');
+                return <td key={dayName}>{dayName}</td>
+              })}
             </tr>
           </thead>
 
           <tbody>
-            {chunk(days, 7).map((row, w) => (
-              <tr key={w}>
-                {row.map((i) => (
-                  <Day key={i} i={i} d={d} w={w}
-                    onClick={this.selectDate.bind(null, i, w)}
-                  />
-                ))}
+            {chunk(days, 7).map((row, week) => (
+              <tr key={week}>
+                {row.map((momentWeekDay) => {
+                  const weekDay = momentWeekDay.format('D');
+                  return (
+                    <Day key={weekDay} weekDay={weekDay} date={date} week={week}
+                      onClick={this.selectDate.bind(null, weekDay, week)}
+                    />
+                  )}
+                )}
               </tr>
             ))}
           </tbody>
@@ -77,12 +85,12 @@ module.exports = React.createClass({
     );
   },
 
-  selectDate(i, w) {
-    var prevMonth = (w === 0 && i > 7);
-    var nextMonth = (w >= 4 && i <= 14);
+  selectDate(weekDay, week) {
+    var prevMonth = (week === 0 && weekDay > 7);
+    var nextMonth = (week >= 4 && weekDay <= 14);
     var m = this.props.moment;
 
-    m.date(i);
+    m.date(weekDay);
     if(prevMonth) m.subtract(1, 'month');
     if(nextMonth) m.add(1, 'month');
 
