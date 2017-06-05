@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server -c --port=8888",
-    "build-js": "babel src --out-dir lib && webpack -p",
+    "build-js": "rm -rf lib && babel src --out-dir lib && webpack -p",
     "build-css": "lessc --clean-css src/less/input-moment.less dist/input-moment.css",
     "build": "npm run build-js && npm run build-css",
     "deploy": "npm run build && github-pages-deploy",
+    "pretest": "npm run build",
     "test": "jest",
+    "prepublish": "npm test",
     "clean": "rm dist/* && rm example/bundle*"
   },
   "github-pages-deploy": {
