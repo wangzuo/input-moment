@@ -42,14 +42,14 @@ export default class InputMoment extends Component {
           <button
             type="button"
             className={cx('ion-calendar im-btn', { 'is-active': tab === 0 })}
-            onClick={() => this.handleClickTab(0)}
+            onClick={(e) => this.handleClickTab(0, e)}
           >
             Date
           </button>
           <button
             type="button"
             className={cx('ion-clock im-btn', { 'is-active': tab === 1 })}
-            onClick={() => this.handleClickTab(1)}
+            onClick={(e) => this.handleClickTab(1, e)}
           >
             Time
           </button>
