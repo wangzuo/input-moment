@@ -1,12 +1,22 @@
-var cx = require('classnames');
-var React = require('react');
-var InputSlider = require('react-input-slider');
+import cx from 'classnames';
+import React, { Component } from 'react';
+import InputSlider from 'react-input-slider';
 
-module.exports = React.createClass({
-  displayName: 'Time',
+export default class extends Component {
+  changeHours = pos => {
+    const m = this.props.moment;
+    m.hours(parseInt(pos.x, 10));
+    this.props.onChange(m);
+  };
+
+  changeMinutes = pos => {
+    const m = this.props.moment;
+    m.minutes(parseInt(pos.x, 10));
+    this.props.onChange(m);
+  };
 
   render() {
-    var m = this.props.moment;
+    const m = this.props.moment;
 
     return (
       <div className={cx('m-time', this.props.className)}>
@@ -36,17 +46,5 @@ module.exports = React.createClass({
         </div>
       </div>
     );
-  },
-
-  changeHours(pos) {
-    var m = this.props.moment;
-    m.hours(parseInt(pos.x, 10));
-    this.props.onChange(m);
-  },
-
-  changeMinutes(pos) {
-    var m = this.props.moment;
-    m.minutes(parseInt(pos.x, 10));
-    this.props.onChange(m);
   }
-});
+}
