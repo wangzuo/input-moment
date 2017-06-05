@@ -72,19 +72,19 @@ export default class Calendar extends Component {
           </thead>
 
           <tbody>
-            {chunk(days, 7).map((row, w) => (
+            {chunk(days, 7).map((row, w) =>
               <tr key={w}>
-                {row.map(i => (
+                {row.map(i =>
                   <Day
                     key={i}
                     i={i}
                     d={d}
                     w={w}
-                    onClick={this.selectDate.bind(null, i, w)}
+                    onClick={() => this.selectDate(i, w)}
                   />
-                ))}
+                )}
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>
