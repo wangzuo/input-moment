@@ -54,7 +54,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wangzuo/input-moment.git"
+    "url": "git+https://github.com/gghildya/input-moment.git"
   },
   "keywords": [
     "react",
@@ -65,7 +65,7 @@
     "moment"
   ],
   "bugs": {
-    "url": "https://github.com/wangzuo/input-moment/issues"
+    "url": "https://github.com/gghildya/input-moment/issues"
   },
-  "homepage": "https://github.com/wangzuo/input-moment#readme"
+  "homepage": "https://github.com/gghildya/input-moment#readme"
 }
