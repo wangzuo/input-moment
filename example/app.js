@@ -22,8 +22,12 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <h1>{packageJson.name}</h1>
-        <h2>{packageJson.description}</h2>
+        <h1>
+          {packageJson.name}
+        </h1>
+        <h2>
+          {packageJson.description}
+        </h2>
         <form>
           <div className="input">
             <input type="text" value={this.state.m.format('llll')} readOnly />

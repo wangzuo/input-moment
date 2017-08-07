@@ -70,13 +70,15 @@ export default class InputMoment extends Component {
           />
         </div>
 
-        <button
-          type="button"
-          className="im-btn btn-save ion-checkmark"
-          onClick={this.handleSave}
-        >
-          Save
-        </button>
+        {this.props.onSave
+          ? <button
+              type="button"
+              className="im-btn btn-save ion-checkmark"
+              onClick={this.handleSave}
+            >
+              Save
+            </button>
+          : null}
       </div>
     );
   }
