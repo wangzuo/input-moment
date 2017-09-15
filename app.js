@@ -22,7 +22,9 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <h1>{packageJson.name}</h1>
+        <h1>
+          {packageJson.name}: {packageJson.version}
+        </h1>
         <h2>{packageJson.description}</h2>
         <form>
           <div className="input">
@@ -31,6 +33,7 @@ class App extends Component {
           <InputMoment
             moment={this.state.m}
             onChange={this.handleChange}
+            minStep={5}
             onSave={this.handleSave}
           />
         </form>
