@@ -7,7 +7,9 @@ import Time from './time';
 export default class InputMoment extends Component {
   static defaultProps = {
     prevMonthIcon: 'ion-ios-arrow-left',
-    nextMonthIcon: 'ion-ios-arrow-right'
+    nextMonthIcon: 'ion-ios-arrow-right',
+    minStep: 1,
+    hourStep: 1
   };
 
   state = {
@@ -31,6 +33,8 @@ export default class InputMoment extends Component {
       className,
       prevMonthIcon,
       nextMonthIcon,
+      minStep,
+      hourStep,
       onSave,
       ...props
     } = this.props;
@@ -66,19 +70,21 @@ export default class InputMoment extends Component {
           <Time
             className={cx('tab', { 'is-active': tab === 1 })}
             moment={m}
+            minStep={this.props.minStep}
+            hourStep={this.props.hourStep}
             onChange={this.props.onChange}
           />
         </div>
 
-        {this.props.onSave
-          ? <button
-              type="button"
-              className="im-btn btn-save ion-checkmark"
-              onClick={this.handleSave}
-            >
-              Save
-            </button>
-          : null}
+        {this.props.onSave ? (
+          <button
+            type="button"
+            className="im-btn btn-save ion-checkmark"
+            onClick={this.handleSave}
+          >
+            Save
+          </button>
+        ) : null}
       </div>
     );
   }

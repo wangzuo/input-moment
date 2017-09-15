@@ -5,13 +5,13 @@ import InputSlider from 'react-input-slider';
 export default class extends Component {
   changeHours = pos => {
     const m = this.props.moment;
-    m.hours(parseInt(pos.x, 10));
+    m.hours(pos.x);
     this.props.onChange(m);
   };
 
   changeMinutes = pos => {
     const m = this.props.moment;
-    m.minutes(parseInt(pos.x, 10));
+    m.minutes(pos.x);
     this.props.onChange(m);
   };
 
@@ -32,6 +32,7 @@ export default class extends Component {
             className="u-slider-time"
             xmin={0}
             xmax={23}
+            xstep={this.props.hourStep}
             x={m.hour()}
             onChange={this.changeHours}
           />
@@ -40,6 +41,7 @@ export default class extends Component {
             className="u-slider-time"
             xmin={0}
             xmax={59}
+            xstep={this.props.minStep}
             x={m.minute()}
             onChange={this.changeMinutes}
           />

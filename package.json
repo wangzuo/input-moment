@@ -50,7 +50,7 @@
   "dependencies": {
     "classnames": "^2.2.0",
     "lodash": "^4.17.4",
-    "react-input-slider": "^2.0.2"
+    "react-input-slider": "^3.0.0"
   },
   "repository": {
     "type": "git",

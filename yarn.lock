@@ -3502,9 +3502,9 @@ react-dom@^15.4.2:
     object-assign "^4.1.0"
     prop-types "~15.5.7"
 
-react-input-slider@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/react-input-slider/-/react-input-slider-2.0.2.tgz#a816ebba6f3b83b2fd0e43d04e38ea50ce3c8d20"
+react-input-slider@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-input-slider/-/react-input-slider-3.0.0.tgz#4f3be1e661293fe1cb293ad15a5988c495dc0681"
   dependencies:
     blacklist "^1.1.2"
     classnames "^2.2.0"
