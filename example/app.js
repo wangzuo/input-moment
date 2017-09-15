@@ -23,11 +23,9 @@ class App extends Component {
     return (
       <div className="app">
         <h1>
-          {packageJson.name}
+          {packageJson.name}: {packageJson.version}
         </h1>
-        <h2>
-          {packageJson.description}
-        </h2>
+        <h2>{packageJson.description}</h2>
         <form>
           <div className="input">
             <input type="text" value={this.state.m.format('llll')} readOnly />

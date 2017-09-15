@@ -2,3 +2,5 @@ __tests__
 example
 src
 webpack.config.js
+.publish
+yarn.lock
