@@ -21,6 +21,8 @@ http://wangzuo.github.io/input-moment
   moment={this.state.moment}
   onChange={this.handleChange}
   onSave={this.handleSave}
+  minStep={1} // default
+  hourStep={1} // default
   prevMonthIcon="ion-ios-arrow-left" // default
   nextMonthIcon="ion-ios-arrow-right" // default
 />
@@ -30,7 +32,7 @@ Check [app.js](https://github.com/wangzuo/input-moment/blob/master/example/app.j
 ### Development
 - npm install
 - npm start
-- http://localhost:8888
+- http://localhost:8080
 
 ### License
 ISC
