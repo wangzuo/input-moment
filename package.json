@@ -1,14 +1,14 @@
 {
   "name": "input-moment",
-  "version": "0.3.4",
+  "version": "0.3.6",
   "description": "React datetime picker powered by momentjs",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server -c --port=8888",
+    "start": "webpack-dev-server -c --port=8080",
     "build-js": "rm -rf lib && babel src --out-dir lib && webpack -p",
     "build-css": "lessc --clean-css src/less/input-moment.less dist/input-moment.css",
     "build": "npm run build-js && npm run build-css",
-    "deploy": "npm run build && github-pages-deploy",
+    "deploy": "rm -rf .publish && npm run build && github-pages-deploy",
     "pretest": "npm run build",
     "test": "jest",
     "prepublish": "npm test",
@@ -51,7 +51,7 @@
     "classnames": "^2.2.0",
     "lodash": "^4.17.4",
     "moment-range": "^3.0.3",
-    "react-input-slider": "^1.5.0"
+    "react-input-slider": "^3.0.0"
   },
   "repository": {
     "type": "git",

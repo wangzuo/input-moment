@@ -3450,7 +3450,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.7, prop-types@~15.5.7:
+prop-types@^15.5.10, prop-types@^15.5.7, prop-types@~15.5.7:
   version "15.5.10"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
   dependencies:
@@ -3536,12 +3536,13 @@ react-dom@^15.4.2:
     object-assign "^4.1.0"
     prop-types "~15.5.7"
 
-react-input-slider@^1.5.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/react-input-slider/-/react-input-slider-1.6.0.tgz#9094103c6c96a0b1cda9db6be825647fc3fa8ebc"
+react-input-slider@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-input-slider/-/react-input-slider-3.0.0.tgz#4f3be1e661293fe1cb293ad15a5988c495dc0681"
   dependencies:
     blacklist "^1.1.2"
     classnames "^2.2.0"
+    prop-types "^15.5.10"
 
 react-test-renderer@^15.4.2:
   version "15.5.4"
