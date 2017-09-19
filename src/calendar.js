@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import cx from 'classnames';
-import range from 'lodash/range';
 import chunk from 'lodash/chunk';
 
 import Moment from 'moment';
