@@ -38,9 +38,5 @@ Check [app.js](https://github.com/wangzuo/input-moment/blob/master/example/app.j
 - npm start
 - http://localhost:8080
 
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/FePD8SysdYMQPkxMdAFPzUxj/wangzuo/input-moment'>
-  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/FePD8SysdYMQPkxMdAFPzUxj/wangzuo/input-moment.svg' />
-</a>
-
 ### License
 ISC
