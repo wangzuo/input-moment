@@ -9,7 +9,8 @@ export default class InputMoment extends Component {
     prevMonthIcon: 'ion-ios-arrow-left',
     nextMonthIcon: 'ion-ios-arrow-right',
     minStep: 1,
-    hourStep: 1
+    hourStep: 1,
+    hideTabs: false
   };
 
   state = {
@@ -36,13 +37,14 @@ export default class InputMoment extends Component {
       minStep,
       hourStep,
       onSave,
+      hideTabs,
       ...props
     } = this.props;
     const cls = cx('m-input-moment', className);
 
     return (
       <div className={cls} {...props}>
-        <div className="options">
+        {!hideTabs ? <div className="options">
           <button
             type="button"
             className={cx('ion-calendar im-btn', { 'is-active': tab === 0 })}
@@ -57,7 +59,8 @@ export default class InputMoment extends Component {
           >
             Time
           </button>
-        </div>
+        </div> : null
+        }
 
         <div className="tabs">
           <Calendar

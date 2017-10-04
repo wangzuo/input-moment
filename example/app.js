@@ -35,6 +35,7 @@ class App extends Component {
             onChange={this.handleChange}
             minStep={5}
             onSave={this.handleSave}
+            hideTabs={false}
           />
         </form>
       </div>
