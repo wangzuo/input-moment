@@ -31,6 +31,7 @@ class App extends Component {
             <input type="text" value={this.state.m.format('llll')} readOnly />
           </div>
           <InputMoment
+            tab={0}
             moment={this.state.m}
             onChange={this.handleChange}
             minStep={5}

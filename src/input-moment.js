@@ -9,11 +9,12 @@ export default class InputMoment extends Component {
     prevMonthIcon: 'ion-ios-arrow-left',
     nextMonthIcon: 'ion-ios-arrow-right',
     minStep: 1,
-    hourStep: 1
+    hourStep: 1,
+    tab: 0
   };
 
   state = {
-    tab: 0
+    tab: this.props.tab || 0
   };
 
   handleClickTab = (e, tab) => {
@@ -24,6 +25,10 @@ export default class InputMoment extends Component {
   handleSave = e => {
     e.preventDefault();
     if (this.props.onSave) this.props.onSave();
+  };
+
+  componentWillReceiveProps = nextProps => {
+    if (this.props.tab !== nextProps.tab) this.setState({tab});
   };
 
   render() {
