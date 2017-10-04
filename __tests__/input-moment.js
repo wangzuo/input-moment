@@ -17,6 +17,6 @@ test('render first tab', () => {
 
 test('render time tab', () => {
   const m = moment().year(2018).month(7).date(8).hours(8).minutes(8).seconds(8);
-  const component = <InputMoment moment={m} tab={0} />;
+  const component = <InputMoment moment={m} tab={1} />;
   expect(renderer.create(component).toJSON()).toMatchSnapshot();
 });

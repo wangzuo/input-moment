@@ -888,14 +888,14 @@ exports[`render time tab 1`] = `
     className="options"
   >
     <button
-      className="ion-calendar im-btn is-active"
+      className="ion-calendar im-btn"
       onClick={[Function]}
       type="button"
     >
       Date
     </button>
     <button
-      className="ion-clock im-btn"
+      className="ion-clock im-btn is-active"
       onClick={[Function]}
       type="button"
     >
@@ -906,7 +906,7 @@ exports[`render time tab 1`] = `
     className="tabs"
   >
     <div
-      className="m-calendar tab is-active"
+      className="m-calendar tab"
     >
       <div
         className="toolbar"
@@ -1230,7 +1230,7 @@ exports[`render time tab 1`] = `
       </table>
     </div>
     <div
-      className="m-time tab"
+      className="m-time tab is-active"
     >
       <div
         className="showtime"
