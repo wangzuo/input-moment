@@ -45,8 +45,8 @@ export default class Calendar extends Component {
     const m = this.props.moment;
     const date = m.date();
 
-    const monthStartWeekDay = m.clone().startOf('month').format('e');
-    const monthEndWeekDay = m.clone().endOf('month').format('e');
+    const monthStartWeekDay = m.clone().startOf('month').weekday();
+    const monthEndWeekDay = m.clone().endOf('month').weekday();
     const dateStart = monthStartWeekDay === 0 ? m.clone().startOf('month') : m.clone().startOf('month').subtract(monthStartWeekDay, 'days');
     const dateEnd = monthEndWeekDay === 6 ? m.clone().endOf('month') : m.clone().endOf('month').add(6-monthEndWeekDay, 'days');
     const daysRange = moment.range(dateStart, dateEnd);
