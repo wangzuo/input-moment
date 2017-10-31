@@ -43,9 +43,18 @@
     font-weight: bold;
   }
 
+  .disabled-day {
+    opacity: .4;
+    text-decoration: line-through;
+  }
+
   .prev-month,
   .next-month {
     color: #999999;
+
+    &-disabled {
+      opacity: .4;
+    }
   }
 
   .toolbar {
@@ -69,6 +78,10 @@
       outline: 0;
       z-index: 5;
       cursor: pointer;
+
+      &:disabled {
+        cursor: not-allowed;
+      }
     }
 
     .prev-month {

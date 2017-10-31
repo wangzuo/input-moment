@@ -4,26 +4,46 @@ import cx from 'classnames';
 import range from 'lodash/range';
 import chunk from 'lodash/chunk';
 
-const Day = ({ i, w, d, className, ...props }) => {
+const Day = ({ i, w, d, minDate, maxDate, currentMoment, className, ...props }) => {
   const prevMonth = w === 0 && i > 7;
   const nextMonth = w >= 4 && i <= 14;
+  const currentMomentCopy = moment();
+
+  if (nextMonth) {
+    currentMomentCopy.set('month', currentMoment.month() + 1);
+  }
+
   const cls = cx({
     'prev-month': prevMonth,
     'next-month': nextMonth,
-    'current-day': !prevMonth && !nextMonth && i === d
+    'current-day': !prevMonth && !nextMonth && i === d,
+    'disabled-day': minDate ? i < minDate.date() && currentMomentCopy.month() === currentMoment.month() : false ||
+      maxDate ? i > maxDate.date() : false
   });
 
   return <td className={cls} {...props}>{i}</td>;
 };
 
 export default class Calendar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      currentTime: this.props.moment
+    }
+  }
   selectDate = (i, w) => {
     const prevMonth = w === 0 && i > 7;
     const nextMonth = w >= 4 && i <= 14;
     const m = this.props.moment;
 
-    if (prevMonth) m.subtract(1, 'month');
-    if (nextMonth) m.add(1, 'month');
+    if (prevMonth) {
+      m.subtract(1, 'month');
+    }
+
+    if (nextMonth) {
+      m.add(1, 'month');
+    }
 
     m.date(i);
 
@@ -32,17 +52,39 @@ export default class Calendar extends Component {
 
   prevMonth = e => {
     e.preventDefault();
-    this.props.onChange(this.props.moment.subtract(1, 'month'));
+    const minDate = this.props.minDate;
+
+    if (!this.props.moment.isBefore(minDate) && !this.props.moment.isSame(minDate)) {
+      this.props.onChange(this.props.moment.subtract(1, 'month'));      
+    }
   };
 
   nextMonth = e => {
     e.preventDefault();
-    this.props.onChange(this.props.moment.add(1, 'month'));
+    const maxDate = this.props.maxDate;
+
+    console.log('this.props.moment.isAfter(maxDate)', this.props.moment.isAfter(maxDate));
+    console.log('this.props.moment.isSame(maxDate, month)', this.props.moment.isSame(maxDate, 'month')); 
+    console.log('this.props.moment.isSame(maxDate, day)', this.props.moment.isSame(maxDate, 'day'));        
+
+    if (!this.props.moment.isAfter(maxDate) && !this.props.moment.isSame(maxDate)) {
+      this.props.onChange(this.props.moment.add(1, 'month'));
+
+      console.log('this.props.moment', this.props.moment);      
+      console.log('this.props.moment.isAfter(maxDate)', this.props.moment.isAfter(maxDate));
+      console.log('this.props.moment.isSame(maxDate, month)', this.props.moment.isSame(maxDate, 'month')); 
+      console.log('this.props.moment.isSame(maxDate, day)', this.props.moment.isSame(maxDate, 'day')); 
+    }
   };
 
   render() {
+    const minDate = this.props.minDate;
+    const maxDate = this.props.maxDate;
+    const currentMoment = this.props.moment;
     const m = this.props.moment;
     const d = m.date();
+    const month = m.month();
+    const year = m.year();
     const d1 = m.clone().subtract(1, 'month').endOf('month').date();
     const d2 = m.clone().date(1).day();
     const d3 = m.clone().endOf('month').date();
@@ -56,11 +98,31 @@ export default class Calendar extends Component {
     return (
       <div className={cx('m-calendar', this.props.className)}>
         <div className="toolbar">
-          <button type="button" className="prev-month" onClick={this.prevMonth}>
+          <button 
+            type="button"
+            className={
+              cx({
+                'prev-month': true,
+                'prev-month-disabled': currentMoment.isBefore(minDate) || currentMoment.isSame(minDate, 'day') && currentMoment.isSame(mindate, 'month')
+              })
+            }
+            onClick={this.prevMonth}
+            disabled={currentMoment.isBefore(minDate) || currentMoment.isSame(minDate, 'day') && currentMoment.isSame(minDate, 'month')}
+            >
             <i className={this.props.prevMonthIcon} />
           </button>
           <span className="current-date">{m.format('MMMM YYYY')}</span>
-          <button type="button" className="next-month" onClick={this.nextMonth}>
+          <button 
+            type="button"
+            className={
+              cx({
+                'next-month': true,
+                'next-month-disabled': currentMoment.isAfter(maxDate) || currentMoment.isSame(maxDate, 'day') && currentMoment.isSame(maxDate, 'month')
+              })
+            }
+            onClick={this.nextMonth}
+            disabled={currentMoment.isAfter(maxDate) || currentMoment.isSame(maxDate, 'day') && currentMoment.isSame(maxDate, 'month')}
+            >
             <i className={this.props.nextMonthIcon} />
           </button>
         </div>
@@ -75,14 +137,18 @@ export default class Calendar extends Component {
           <tbody>
             {chunk(days, 7).map((row, w) =>
               <tr key={w}>
-                {row.map(i =>
-                  <Day
+                {row.map(i => {
+                  return <Day
                     key={i}
                     i={i}
                     d={d}
                     w={w}
+                    minDate={minDate}
+                    maxDate={maxDate}
+                    currentMoment={currentMoment}
                     onClick={() => this.selectDate(i, w)}
                   />
+                }
                 )}
               </tr>
             )}
