@@ -20,15 +20,6 @@ class App extends Component {
   };
 
   render() {
-    const maxDate = moment();
-    const minDate = moment();
-    maxDate.set('month', moment().month() + 1);
-    maxDate.date(23);
-    minDate.date(11);
-
-    console.log('maxDate from app.js', maxDate);
-    console.log('minDate from app.js', minDate);
-
     return (
       <div className="app">
         <h1>
@@ -44,8 +35,6 @@ class App extends Component {
             onChange={this.handleChange}
             minStep={5}
             onSave={this.handleSave}
-            minDate={minDate}
-            maxDate={maxDate}
           />
         </form>
       </div>

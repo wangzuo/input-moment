@@ -4,19 +4,22 @@ import cx from 'classnames';
 import range from 'lodash/range';
 import chunk from 'lodash/chunk';
 
-const isDisabledDay = (currentMoment, minDate, maxDate) => !currentMoment.isBetween(minDate, maxDate, null, '[]'); // '[]' indicates inclusion of both values.
+const isDisabledDay = (currentMoment, minDate, maxDate) => !currentMoment.isBetween(minDate, maxDate);
 
 const Day = ({ i, w, d, minDate, maxDate, currentMoment, className, ...props }) => {
   const prevMonth = w === 0 && i > 7;
   const nextMonth = w >= 4 && i <= 14;
   const currentMomentCopy = moment(currentMoment); // Moment clone.
-  currentMomentCopy.date(i);
 
   if (prevMonth) {
     currentMomentCopy.subtract(1, 'month');
-  } else if (nextMonth) {
+  }
+
+  if (nextMonth) {
     currentMomentCopy.add(1, 'month');
   }
+
+  currentMomentCopy.date(i); 
 
   const cls = cx({
     'prev-month': prevMonth,
