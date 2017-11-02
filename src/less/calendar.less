@@ -43,17 +43,33 @@
     font-weight: bold;
   }
 
-  .disabled-day {
-    opacity: .4;
-    text-decoration: line-through;
-  }
-
   .prev-month,
   .next-month {
     color: #999999;
 
     &-disabled {
       opacity: .4;
+    }
+  }
+
+  .disabled-day {
+    background-color: black;
+    color: white;
+    cursor: not-allowed;
+    opacity: .4;
+
+    &.current-day {
+      color: @color-blue;
+
+      &:hover {
+        color: @color-blue;
+      }
+    }
+
+    &:hover {
+      background-color: black;
+      border-color: @color-gray;
+      color: white;
     }
   }
 

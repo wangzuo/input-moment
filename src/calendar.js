@@ -4,24 +4,32 @@ import cx from 'classnames';
 import range from 'lodash/range';
 import chunk from 'lodash/chunk';
 
+const isDisabledDay = (currentMoment, minDate, maxDate) => !currentMoment.isBetween(minDate, maxDate, null, '[]'); // '[]' indicates inclusion of both values.
+
 const Day = ({ i, w, d, minDate, maxDate, currentMoment, className, ...props }) => {
   const prevMonth = w === 0 && i > 7;
   const nextMonth = w >= 4 && i <= 14;
-  const currentMomentCopy = moment();
+  const currentMomentCopy = moment(currentMoment); // Moment clone.
+  currentMomentCopy.date(i);
 
-  if (nextMonth) {
-    currentMomentCopy.set('month', currentMoment.month() + 1);
+  if (prevMonth) {
+    currentMomentCopy.subtract(1, 'month');
+  } else if (nextMonth) {
+    currentMomentCopy.add(1, 'month');
   }
 
   const cls = cx({
     'prev-month': prevMonth,
     'next-month': nextMonth,
     'current-day': !prevMonth && !nextMonth && i === d,
-    'disabled-day': minDate ? i < minDate.date() && currentMomentCopy.month() === currentMoment.month() : false ||
-      maxDate ? i > maxDate.date() : false
+    'disabled-day': isDisabledDay(currentMomentCopy, minDate, maxDate)
   });
 
-  return <td className={cls} {...props}>{i}</td>;
+  if (isDisabledDay(currentMomentCopy, minDate, maxDate)) {
+    return <td className={cls} {...props} onClick={() => null}>{i}</td>;    
+  } else {
+    return <td className={cls} {...props}>{i}</td>;
+  }
 };
 
 export default class Calendar extends Component {
@@ -29,9 +37,17 @@ export default class Calendar extends Component {
     super(props);
 
     this.state = {
-      currentTime: this.props.moment
+      currentTime: this.props.moment,
+      previousMonthShouldBeDisabled: false,
+      nextMonthShouldBeDisabled: false
     }
   }
+
+  componentDidMount() {
+    this.previousMonthShouldBeDisabled(this.state.currentTime);
+    this.nextMonthShouldBeDisabled(this.state.currentTime);
+  }
+   
   selectDate = (i, w) => {
     const prevMonth = w === 0 && i > 7;
     const nextMonth = w >= 4 && i <= 14;
@@ -48,34 +64,49 @@ export default class Calendar extends Component {
     m.date(i);
 
     this.props.onChange(m);
+    this.previousMonthShouldBeDisabled(this.state.currentTime);
+    this.nextMonthShouldBeDisabled(this.state.currentTime);
   };
 
   prevMonth = e => {
     e.preventDefault();
     const minDate = this.props.minDate;
 
-    if (!this.props.moment.isBefore(minDate) && !this.props.moment.isSame(minDate)) {
-      this.props.onChange(this.props.moment.subtract(1, 'month'));      
-    }
+    this.props.onChange(this.props.moment.subtract(1, 'month'));
+    this.previousMonthShouldBeDisabled(this.state.currentTime);
+    this.nextMonthShouldBeDisabled(this.state.currentTime);
   };
 
   nextMonth = e => {
     e.preventDefault();
     const maxDate = this.props.maxDate;
 
-    console.log('this.props.moment.isAfter(maxDate)', this.props.moment.isAfter(maxDate));
-    console.log('this.props.moment.isSame(maxDate, month)', this.props.moment.isSame(maxDate, 'month')); 
-    console.log('this.props.moment.isSame(maxDate, day)', this.props.moment.isSame(maxDate, 'day'));        
-
-    if (!this.props.moment.isAfter(maxDate) && !this.props.moment.isSame(maxDate)) {
-      this.props.onChange(this.props.moment.add(1, 'month'));
-
-      console.log('this.props.moment', this.props.moment);      
-      console.log('this.props.moment.isAfter(maxDate)', this.props.moment.isAfter(maxDate));
-      console.log('this.props.moment.isSame(maxDate, month)', this.props.moment.isSame(maxDate, 'month')); 
-      console.log('this.props.moment.isSame(maxDate, day)', this.props.moment.isSame(maxDate, 'day')); 
-    }
+    this.props.onChange(this.props.moment.add(1, 'month'));
+    this.previousMonthShouldBeDisabled(this.state.currentTime);
+    this.nextMonthShouldBeDisabled(this.state.currentTime);
   };
+
+  previousMonthShouldBeDisabled = currentMoment => {
+    const currentMomentCopy = moment(currentMoment);
+
+    currentMomentCopy.subtract(1, 'month');
+    currentMomentCopy.endOf('month');
+ 
+    this.setState({
+      previousMonthShouldBeDisabled: currentMomentCopy.isBefore(this.props.minDate)
+    });
+  }
+
+  nextMonthShouldBeDisabled = currentMoment => {
+    const currentMomentCopy = moment(currentMoment);
+
+    currentMomentCopy.add(1, 'month');
+    currentMomentCopy.startOf('month');
+
+    this.setState({
+      nextMonthShouldBeDisabled: currentMomentCopy.isAfter(this.props.maxDate)
+    });
+  }
 
   render() {
     const minDate = this.props.minDate;
@@ -103,11 +134,11 @@ export default class Calendar extends Component {
             className={
               cx({
                 'prev-month': true,
-                'prev-month-disabled': currentMoment.isBefore(minDate) || currentMoment.isSame(minDate, 'day') && currentMoment.isSame(mindate, 'month')
+                'prev-month-disabled': this.state.previousMonthShouldBeDisabled
               })
             }
             onClick={this.prevMonth}
-            disabled={currentMoment.isBefore(minDate) || currentMoment.isSame(minDate, 'day') && currentMoment.isSame(minDate, 'month')}
+            disabled={this.state.previousMonthShouldBeDisabled}
             >
             <i className={this.props.prevMonthIcon} />
           </button>
@@ -117,11 +148,11 @@ export default class Calendar extends Component {
             className={
               cx({
                 'next-month': true,
-                'next-month-disabled': currentMoment.isAfter(maxDate) || currentMoment.isSame(maxDate, 'day') && currentMoment.isSame(maxDate, 'month')
+                'next-month-disabled': this.state.nextMonthShouldBeDisabled
               })
             }
             onClick={this.nextMonth}
-            disabled={currentMoment.isAfter(maxDate) || currentMoment.isSame(maxDate, 'day') && currentMoment.isSame(maxDate, 'month')}
+            disabled={this.state.nextMonthShouldBeDisabled}
             >
             <i className={this.props.nextMonthIcon} />
           </button>
