@@ -25,7 +25,7 @@ const Day = ({ i, w, d, minDate, maxDate, currentMoment, className, ...props }) 
     'prev-month': prevMonth,
     'next-month': nextMonth,
     'current-day': !prevMonth && !nextMonth && i === d,
-    'disabled-day': isDisabledDay(currentMomentCopy, minDate, maxDate)
+    'disabled-day': minDate && maxDate ? isDisabledDay(currentMomentCopy, minDate, maxDate) : false
   });
 
   if (isDisabledDay(currentMomentCopy, minDate, maxDate)) {
