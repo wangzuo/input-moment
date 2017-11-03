@@ -29,6 +29,8 @@ http://wangzuo.github.io/input-moment
   hourStep={1} // default
   prevMonthIcon="ion-ios-arrow-left" // default
   nextMonthIcon="ion-ios-arrow-right" // default
+  minDate={this.state.minDate} // optional
+  maxDate={this.state.maxDate} // optional
 />
 ```
 Check [app.js](https://github.com/wangzuo/input-moment/blob/master/example/app.js) for a working example.
