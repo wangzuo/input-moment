@@ -73,18 +73,32 @@ export default class Calendar extends Component {
 
   prevMonth = e => {
     e.preventDefault();
-    const minDate = this.props.minDate;
+    const momentCopy = this.props.moment;
+    const { minDate, maxDate } = this.props;
 
-    this.props.onChange(this.props.moment.subtract(1, 'month'));
+    momentCopy.subtract(1, 'month');
+
+    if (momentCopy.isBefore(minDate)) {
+      momentCopy.endOf('month');
+    }
+
+    this.props.onChange(momentCopy);          
     this.previousMonthShouldBeDisabled(this.state.currentTime);
     this.nextMonthShouldBeDisabled(this.state.currentTime);
   };
 
   nextMonth = e => {
     e.preventDefault();
-    const maxDate = this.props.maxDate;
+    const momentCopy = this.props.moment;
+    const { minDate, maxDate } = this.props;
 
-    this.props.onChange(this.props.moment.add(1, 'month'));
+    momentCopy.add(1, 'month');
+
+    if (momentCopy.isAfter(maxDate)) {
+      momentCopy.startOf('month');
+    }
+
+    this.props.onChange(momentCopy);
     this.previousMonthShouldBeDisabled(this.state.currentTime);
     this.nextMonthShouldBeDisabled(this.state.currentTime);
   };
