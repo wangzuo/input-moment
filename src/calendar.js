@@ -29,6 +29,7 @@ const Day = ({ i, w, d, minDate, maxDate, currentMoment, className, ...props }) 
   });
 
   if (isDisabledDay(currentMomentCopy, minDate, maxDate)) {
+    // We overwrite the onClick function with a function which returns null (do nothing).
     return <td className={cls} {...props} onClick={() => null}>{i}</td>;    
   } else {
     return <td className={cls} {...props}>{i}</td>;
@@ -41,13 +42,20 @@ export default class Calendar extends Component {
 
     this.state = {
       currentTime: this.props.moment,
-      previousMonthShouldBeDisabled: false,
+      prevMonthShouldBeDisabled: false,
       nextMonthShouldBeDisabled: false
     }
+
+    this.selectDate = this.selectDate.bind(this);
+    this.prevMonth = this.prevMonth.bind(this);    
+    this.prevMonthShouldBeDisabled = this.prevMonthShouldBeDisabled.bind(this);
+    this.nextMonth = this.nextMonth.bind(this);    
+    this.nextMonthShouldBeDisabled = this.nextMonthShouldBeDisabled.bind(this);
+    this.setCurrentTime = this.setCurrentTime.bind(this);
   }
 
   componentDidMount() {
-    this.previousMonthShouldBeDisabled(this.state.currentTime);
+    this.prevMonthShouldBeDisabled(this.state.currentTime);
     this.nextMonthShouldBeDisabled(this.state.currentTime);
   }
    
@@ -67,52 +75,53 @@ export default class Calendar extends Component {
     m.date(i);
 
     this.props.onChange(m);
-    this.previousMonthShouldBeDisabled(this.state.currentTime);
+    this.prevMonthShouldBeDisabled(this.state.currentTime);
     this.nextMonthShouldBeDisabled(this.state.currentTime);
   };
 
   prevMonth = e => {
     e.preventDefault();
     const momentCopy = this.props.moment;
-    const { minDate, maxDate } = this.props;
+    const { minDate } = this.props;
 
     momentCopy.subtract(1, 'month');
 
-    if (momentCopy.isBefore(minDate)) {
+    if (momentCopy.isBefore(minDate, 'day')) {
       momentCopy.endOf('month');
     }
 
-    this.props.onChange(momentCopy);          
-    this.previousMonthShouldBeDisabled(this.state.currentTime);
+    this.props.onChange(this.setCurrentTime(momentCopy));          
+    this.prevMonthShouldBeDisabled(this.state.currentTime);
     this.nextMonthShouldBeDisabled(this.state.currentTime);
   };
 
-  nextMonth = e => {
-    e.preventDefault();
-    const momentCopy = this.props.moment;
-    const { minDate, maxDate } = this.props;
 
-    momentCopy.add(1, 'month');
-
-    if (momentCopy.isAfter(maxDate)) {
-      momentCopy.startOf('month');
-    }
-
-    this.props.onChange(momentCopy);
-    this.previousMonthShouldBeDisabled(this.state.currentTime);
-    this.nextMonthShouldBeDisabled(this.state.currentTime);
-  };
-
-  previousMonthShouldBeDisabled = currentMoment => {
+  prevMonthShouldBeDisabled = currentMoment => {
     const currentMomentCopy = moment(currentMoment);
 
     currentMomentCopy.subtract(1, 'month');
     currentMomentCopy.endOf('month');
  
     this.setState({
-      previousMonthShouldBeDisabled: currentMomentCopy.isBefore(this.props.minDate)
+      prevMonthShouldBeDisabled: currentMomentCopy.isBefore(this.props.minDate)
     });
-  }
+  };
+
+  nextMonth = e => {
+    e.preventDefault();
+    const momentCopy = this.props.moment;
+    const { maxDate } = this.props;
+
+    momentCopy.add(1, 'month');
+
+    if (momentCopy.isAfter(maxDate, 'day')) {
+      momentCopy.startOf('month');
+    }
+
+    this.props.onChange(this.setCurrentTime(momentCopy));
+    this.prevMonthShouldBeDisabled(this.state.currentTime);
+    this.nextMonthShouldBeDisabled(this.state.currentTime);
+  };
 
   nextMonthShouldBeDisabled = currentMoment => {
     const currentMomentCopy = moment(currentMoment);
@@ -123,12 +132,18 @@ export default class Calendar extends Component {
     this.setState({
       nextMonthShouldBeDisabled: currentMomentCopy.isAfter(this.props.maxDate)
     });
+  };
+
+  setCurrentTime = m => {
+    m.hours(moment().hours());
+    m.minutes(moment().minutes());
+    m.seconds(moment().seconds());
+    m.milliseconds(moment().milliseconds());
+
+    return m;
   }
 
   render() {
-    const minDate = this.props.minDate;
-    const maxDate = this.props.maxDate;
-    const currentMoment = this.props.moment;
     const m = this.props.moment;
     const d = m.date();
     const month = m.month();
@@ -142,6 +157,8 @@ export default class Calendar extends Component {
       range(1, 42 - d3 - d2 + 1)
     );
     const weeks = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const minDate = this.props.minDate;
+    const maxDate = this.props.maxDate;
 
     return (
       <div className={cx('m-calendar', this.props.className)}>
@@ -151,11 +168,11 @@ export default class Calendar extends Component {
             className={
               cx({
                 'prev-month': true,
-                'prev-month-disabled': this.state.previousMonthShouldBeDisabled
+                'prev-month-disabled': this.state.prevMonthShouldBeDisabled
               })
             }
             onClick={this.prevMonth}
-            disabled={this.state.previousMonthShouldBeDisabled}
+            disabled={this.state.prevMonthShouldBeDisabled}
             >
             <i className={this.props.prevMonthIcon} />
           </button>
@@ -191,10 +208,10 @@ export default class Calendar extends Component {
                     i={i}
                     d={d}
                     w={w}
+                    onClick={() => this.selectDate(i, w)}
                     minDate={minDate}
                     maxDate={maxDate}
-                    currentMoment={currentMoment}
-                    onClick={() => this.selectDate(i, w)}
+                    currentMoment={m}
                   />
                 }
                 )}
