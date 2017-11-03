@@ -4,7 +4,7 @@ import cx from 'classnames';
 import range from 'lodash/range';
 import chunk from 'lodash/chunk';
 
-const isDisabledDay = (currentMoment, minDate, maxDate) => !currentMoment.isBetween(minDate, maxDate);
+const isDisabledDay = (currentMoment, minDate, maxDate) => currentMoment.isBefore(minDate, 'day') || currentMoment.isAfter(maxDate, 'day');
 
 const Day = ({ i, w, d, minDate, maxDate, currentMoment, className, ...props }) => {
   const prevMonth = w === 0 && i > 7;
@@ -25,7 +25,7 @@ const Day = ({ i, w, d, minDate, maxDate, currentMoment, className, ...props }) 
     'prev-month': prevMonth,
     'next-month': nextMonth,
     'current-day': !prevMonth && !nextMonth && i === d,
-    'disabled-day': minDate && maxDate ? isDisabledDay(currentMomentCopy, minDate, maxDate) : false
+    'disabled-day': minDate || maxDate ? isDisabledDay(currentMomentCopy, minDate, maxDate) : false
   });
 
   if (isDisabledDay(currentMomentCopy, minDate, maxDate)) {
