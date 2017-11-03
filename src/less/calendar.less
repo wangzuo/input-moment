@@ -29,7 +29,7 @@
   }
 
   tbody td {
-    color: #666666;
+    color: @color-gray-40;
 
     &:hover {
       background: @color-blue;
@@ -43,9 +43,34 @@
     font-weight: bold;
   }
 
+  .disabled-day {
+    background-color: @color-gray;
+    color: @color-gray-40;
+    cursor: not-allowed;
+    opacity: .4;
+
+    &.current-day {
+      color: @color-blue;
+
+      &:hover {
+        color: @color-blue;
+      }
+    }
+
+    &:hover {
+      background-color: @color-gray;
+      border-color: @color-gray;
+      color: @color-gray-40;
+    }
+  }
+
   .prev-month,
   .next-month {
-    color: #999999;
+    color: @color-gray-60;
+
+    &-disabled {
+      opacity: .4;
+    }
   }
 
   .toolbar {
@@ -69,6 +94,10 @@
       outline: 0;
       z-index: 5;
       cursor: pointer;
+
+      &:disabled {
+        cursor: not-allowed;
+      }
     }
 
     .prev-month {

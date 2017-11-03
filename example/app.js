@@ -8,7 +8,9 @@ import packageJson from '../package.json';
 
 class App extends Component {
   state = {
-    m: moment()
+    m: moment(),
+    minDate: moment(),
+    maxDate: moment().add(1, 'month')
   };
 
   handleChange = m => {
@@ -35,6 +37,8 @@ class App extends Component {
             onChange={this.handleChange}
             minStep={5}
             onSave={this.handleSave}
+            minDate={this.state.minDate}
+            maxDate={this.state.maxDate}
           />
         </form>
       </div>

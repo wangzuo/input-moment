@@ -33,6 +33,7 @@ exports[`render 1`] = `
       >
         <button
           className="prev-month"
+          disabled={false}
           onClick={[Function]}
           type="button"
         >
@@ -47,6 +48,7 @@ exports[`render 1`] = `
         </span>
         <button
           className="next-month"
+          disabled={false}
           onClick={[Function]}
           type="button"
         >
