@@ -302,50 +302,6 @@ exports[`render 1`] = `
               1
             </td>
           </tr>
-          <tr>
-            <td
-              className="next-month"
-              onClick={[Function]}
-            >
-              2
-            </td>
-            <td
-              className="next-month"
-              onClick={[Function]}
-            >
-              3
-            </td>
-            <td
-              className="next-month"
-              onClick={[Function]}
-            >
-              4
-            </td>
-            <td
-              className="next-month"
-              onClick={[Function]}
-            >
-              5
-            </td>
-            <td
-              className="next-month"
-              onClick={[Function]}
-            >
-              6
-            </td>
-            <td
-              className="next-month"
-              onClick={[Function]}
-            >
-              7
-            </td>
-            <td
-              className="next-month"
-              onClick={[Function]}
-            >
-              8
-            </td>
-          </tr>
         </tbody>
       </table>
     </div>

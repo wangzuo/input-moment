@@ -8,7 +8,8 @@ import packageJson from '../package.json';
 
 class App extends Component {
   state = {
-    m: moment()
+    m: moment().year(2018).month(7).date(8).hours(8).minutes(8).seconds(8)
+    // m: moment()
   };
 
   handleChange = m => {

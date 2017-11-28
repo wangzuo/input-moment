@@ -1,31 +1,32 @@
-import moment from 'moment';
 import React, { Component } from 'react';
 import cx from 'classnames';
-import range from 'lodash/range';
 import chunk from 'lodash/chunk';
 
-const Day = ({ i, w, d, className, ...props }) => {
-  const prevMonth = w === 0 && i > 7;
-  const nextMonth = w >= 4 && i <= 14;
+import Moment from 'moment';
+import { extendMoment } from 'moment-range';
+const moment = extendMoment(Moment);
+
+const Day = ({ weekDay, weekNumber, selected, className, ...props }) => {
+  const prevMonth = weekNumber === 0 && weekDay > 7;
+  const nextMonth = weekNumber >= 4 && weekDay <= 14;
   const cls = cx({
     'prev-month': prevMonth,
     'next-month': nextMonth,
-    'current-day': !prevMonth && !nextMonth && i === d
+    'current-day': !prevMonth && !nextMonth && selected
   });
 
-  return <td className={cls} {...props}>{i}</td>;
+  return <td className={cls} {...props}>{weekDay}</td>;
 };
 
 export default class Calendar extends Component {
-  selectDate = (i, w) => {
-    const prevMonth = w === 0 && i > 7;
-    const nextMonth = w >= 4 && i <= 14;
+  selectDate = (weekDay, weekNumber) => {
+    const prevMonth = weekNumber === 0 && weekDay > 7;
+    const nextMonth = weekNumber >= 4 && weekDay <= 14;
     const m = this.props.moment;
 
+    m.date(weekDay);
     if (prevMonth) m.subtract(1, 'month');
     if (nextMonth) m.add(1, 'month');
-
-    m.date(i);
 
     this.props.onChange(m);
   };
@@ -42,16 +43,17 @@ export default class Calendar extends Component {
 
   render() {
     const m = this.props.moment;
-    const d = m.date();
-    const d1 = m.clone().subtract(1, 'month').endOf('month').date();
-    const d2 = m.clone().date(1).day();
-    const d3 = m.clone().endOf('month').date();
-    const days = [].concat(
-      range(d1 - d2 + 1, d1 + 1),
-      range(1, d3 + 1),
-      range(1, 42 - d3 - d2 + 1)
-    );
-    const weeks = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const date = m.date();
+
+    const monthStartWeekDay = m.clone().startOf('month').weekday();
+    const monthEndWeekDay = m.clone().endOf('month').weekday();
+    const dateStart = monthStartWeekDay === 0 ? m.clone().startOf('month') : m.clone().startOf('month').subtract(monthStartWeekDay, 'days');
+    const dateEnd = monthEndWeekDay === 6 ? m.clone().endOf('month') : m.clone().endOf('month').add(6-monthEndWeekDay, 'days');
+    const daysRange = moment.range(dateStart, dateEnd);
+    
+    const days = Array.from(daysRange.by('day'));
+    const weekRange = moment.range(m.clone().startOf('week'), m.clone().endOf('week'));
+    const weeks = Array.from(weekRange.by('day'));
 
     return (
       <div className={cx('m-calendar', this.props.className)}>
@@ -68,21 +70,29 @@ export default class Calendar extends Component {
         <table>
           <thead>
             <tr>
-              {weeks.map((w, i) => <td key={i}>{w}</td>)}
+              {weeks.map((day) => { 
+                const dayName = day.format('ddd');
+                return <td key={dayName}>{dayName}</td>
+              })}
             </tr>
           </thead>
 
           <tbody>
-            {chunk(days, 7).map((row, w) =>
-              <tr key={w}>
-                {row.map(i =>
-                  <Day
-                    key={i}
-                    i={i}
-                    d={d}
-                    w={w}
-                    onClick={() => this.selectDate(i, w)}
-                  />
+            {chunk(days, 7).map((row, weekNumber) =>
+              <tr key={weekNumber}>
+                {row.map(momentWeekDay => {
+                  const weekDay = +momentWeekDay.format('D');
+                  const selected = weekDay === date;
+                  return (
+                    <Day
+                      key={weekDay}
+                      weekDay={weekDay}
+                      selected={selected}
+                      weekNumber={weekNumber}
+                      onClick={() => this.selectDate(weekDay, weekNumber)}
+                    />
+                  );
+                }
                 )}
               </tr>
             )}
