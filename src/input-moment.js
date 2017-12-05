@@ -42,33 +42,33 @@ export default class InputMoment extends Component {
 
     return (
       <div className={cls} {...props}>
-        <div className="options">
+        <div className="input-moment-options">
           <button
             type="button"
-            className={cx('ion-calendar im-btn', { 'is-active': tab === 0 })}
+            className={cx('ion-calendar input-moment-im-btn', { 'is-active': tab === 0 })}
             onClick={e => this.handleClickTab(e, 0)}
           >
             Date
           </button>
           <button
             type="button"
-            className={cx('ion-clock im-btn', { 'is-active': tab === 1 })}
+            className={cx('ion-clock input-moment-im-btn', { 'is-active': tab === 1 })}
             onClick={e => this.handleClickTab(e, 1)}
           >
             Time
           </button>
         </div>
 
-        <div className="tabs">
+        <div className="input-moment-tabs">
           <Calendar
-            className={cx('tab', { 'is-active': tab === 0 })}
+            className={cx('input-moment-tab', { 'is-active': tab === 0 })}
             moment={m}
             onChange={this.props.onChange}
             prevMonthIcon={this.props.prevMonthIcon}
             nextMonthIcon={this.props.nextMonthIcon}
           />
           <Time
-            className={cx('tab', { 'is-active': tab === 1 })}
+            className={cx('input-moment-tab', { 'is-active': tab === 1 })}
             moment={m}
             minStep={this.props.minStep}
             hourStep={this.props.hourStep}
@@ -79,7 +79,7 @@ export default class InputMoment extends Component {
         {this.props.onSave ? (
           <button
             type="button"
-            className="im-btn btn-save ion-checkmark"
+            className="input-moment-im-btn input-moment-btn-save ion-checkmark"
             onClick={this.handleSave}
           >
             Save
