@@ -29,7 +29,7 @@ export default class extends Component {
         <div className="input-moment-sliders">
           <div className="input-moment-time-text">Hours:</div>
           <InputSlider
-            className="u-slider-time"
+            className="input-moment-u-slider-time"
             xmin={0}
             xmax={23}
             xstep={this.props.hourStep}
@@ -38,7 +38,7 @@ export default class extends Component {
           />
           <div className="input-moment-time-text">Minutes:</div>
           <InputSlider
-            className="u-slider-time"
+            className="input-moment-u-slider-time"
             xmin={0}
             xmax={59}
             xstep={this.props.minStep}
