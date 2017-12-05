@@ -19,15 +19,15 @@ export default class extends Component {
     const m = this.props.moment;
 
     return (
-      <div className={cx('m-time', this.props.className)}>
-        <div className="showtime">
-          <span className="time">{m.format('HH')}</span>
-          <span className="separater">:</span>
-          <span className="time">{m.format('mm')}</span>
+      <div className={cx('input-moment-m-time', this.props.className)}>
+        <div className="input-moment-showtime">
+          <span className="input-moment-time">{m.format('HH')}</span>
+          <span className="input-moment-separater">:</span>
+          <span className="input-moment-time">{m.format('mm')}</span>
         </div>
 
-        <div className="sliders">
-          <div className="time-text">Hours:</div>
+        <div className="input-moment-sliders">
+          <div className="input-moment-time-text">Hours:</div>
           <InputSlider
             className="u-slider-time"
             xmin={0}
@@ -36,7 +36,7 @@ export default class extends Component {
             x={m.hour()}
             onChange={this.changeHours}
           />
-          <div className="time-text">Minutes:</div>
+          <div className="input-moment-time-text">Minutes:</div>
           <InputSlider
             className="u-slider-time"
             xmin={0}
