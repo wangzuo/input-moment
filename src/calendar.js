@@ -8,8 +8,8 @@ const Day = ({ i, w, d, className, ...props }) => {
   const prevMonth = w === 0 && i > 7;
   const nextMonth = w >= 4 && i <= 14;
   const cls = cx({
-    'prev-month': prevMonth,
-    'next-month': nextMonth,
+    'input-moment-prev-month': prevMonth,
+    'input-moment-next-month': nextMonth,
     'current-day': !prevMonth && !nextMonth && i === d
   });
 
@@ -56,11 +56,11 @@ export default class Calendar extends Component {
     return (
       <div className={cx('input-moment-calendar', this.props.className)}>
         <div className="input-moment-toolbar">
-          <button type="button" className="prev-month" onClick={this.prevMonth}>
+          <button type="button" className="input-moment-prev-month" onClick={this.prevMonth}>
             <i className={this.props.prevMonthIcon} />
           </button>
           <span className="current-date">{m.format('MMMM YYYY')}</span>
-          <button type="button" className="next-month" onClick={this.nextMonth}>
+          <button type="button" className="input-moment-next-month" onClick={this.nextMonth}>
             <i className={this.props.nextMonthIcon} />
           </button>
         </div>
