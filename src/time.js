@@ -17,6 +17,7 @@ export default class extends Component {
 
   render() {
     const m = this.props.moment;
+    const labels = this.props.labels;
 
     return (
       <div className={cx('m-time', this.props.className)}>
@@ -27,7 +28,7 @@ export default class extends Component {
         </div>
 
         <div className="sliders">
-          <div className="time-text">Hours:</div>
+          <div className="time-text">{labels.hours}:</div>
           <InputSlider
             className="u-slider-time"
             xmin={0}
@@ -36,7 +37,7 @@ export default class extends Component {
             x={m.hour()}
             onChange={this.changeHours}
           />
-          <div className="time-text">Minutes:</div>
+          <div className="time-text">{labels.minutes}:</div>
           <InputSlider
             className="u-slider-time"
             xmin={0}
