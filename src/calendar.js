@@ -51,7 +51,8 @@ export default class Calendar extends Component {
       range(1, d3 + 1),
       range(1, 42 - d3 - d2 + 1)
     );
-    const weeks = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const dayLabels = this.props.labels.days;
+    const weeks = [dayLabels.sun, dayLabels.mon, dayLabels.tue, dayLabels.wed, dayLabels.thu, dayLabels.fri, dayLabels.sat];
 
     return (
       <div className={cx('m-calendar', this.props.className)}>

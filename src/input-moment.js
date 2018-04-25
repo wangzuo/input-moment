@@ -9,7 +9,23 @@ export default class InputMoment extends Component {
     prevMonthIcon: 'ion-ios-arrow-left',
     nextMonthIcon: 'ion-ios-arrow-right',
     minStep: 1,
-    hourStep: 1
+    hourStep: 1,
+    labels: {
+      date: 'Date',
+      time: 'Time',
+      save: 'Save',
+      days: {
+        sun: 'Sun',
+        mon: 'Mon',
+        tue: 'Tue',
+        wed: 'Wed',
+        thu: 'Thu',
+        fri: 'Fri',
+        sat: 'Sat'
+      },
+      hours: 'Hours',
+      minutes: 'Minutes'
+    }
   };
 
   state = {
@@ -36,6 +52,7 @@ export default class InputMoment extends Component {
       minStep,
       hourStep,
       onSave,
+      labels,
       ...props
     } = this.props;
     const cls = cx('m-input-moment', className);
@@ -48,14 +65,14 @@ export default class InputMoment extends Component {
             className={cx('ion-calendar im-btn', { 'is-active': tab === 0 })}
             onClick={e => this.handleClickTab(e, 0)}
           >
-            Date
+              {labels.date}
           </button>
           <button
             type="button"
             className={cx('ion-clock im-btn', { 'is-active': tab === 1 })}
             onClick={e => this.handleClickTab(e, 1)}
           >
-            Time
+              {labels.time}
           </button>
         </div>
 
@@ -66,6 +83,7 @@ export default class InputMoment extends Component {
             onChange={this.props.onChange}
             prevMonthIcon={this.props.prevMonthIcon}
             nextMonthIcon={this.props.nextMonthIcon}
+            labels={labels}
           />
           <Time
             className={cx('tab', { 'is-active': tab === 1 })}
@@ -73,6 +91,7 @@ export default class InputMoment extends Component {
             minStep={this.props.minStep}
             hourStep={this.props.hourStep}
             onChange={this.props.onChange}
+            labels={labels}
           />
         </div>
 
@@ -82,7 +101,7 @@ export default class InputMoment extends Component {
             className="im-btn btn-save ion-checkmark"
             onClick={this.handleSave}
           >
-            Save
+              {labels.save}
           </button>
         ) : null}
       </div>
