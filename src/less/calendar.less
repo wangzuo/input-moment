@@ -31,7 +31,7 @@
   tbody td {
     color: #666666;
 
-    &:hover {
+    &.valid:hover {
       background: @color-blue;
       border-color: @color-blue;
       color: @color-white;
@@ -46,6 +46,13 @@
   .prev-month,
   .next-month {
     color: #999999;
+  }
+
+  .invalid {
+    color: @color-gray;
+    &:hover {
+      cursor: not-allowed;
+    }
   }
 
   .toolbar {
