@@ -2,6 +2,7 @@
 
 exports[`render 1`] = `
 <div
+  amPmFormat={false}
   className="m-input-moment"
 >
   <div
