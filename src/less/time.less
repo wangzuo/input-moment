@@ -1,10 +1,11 @@
-@import 'variables';
+@import "variables";
 
 .m-time {
   color: @color-white;
   padding-top: 50px;
 
   .showtime {
+    position: relative;
     text-align: center;
   }
 
@@ -41,5 +42,13 @@
     background-color: @color-blue;
     border-radius: 3px;
     text-align: center;
+  }
+
+  .amPmText {
+    color: @color-blue;
+    font-size: 28px;
+    position: absolute;
+    right: 10px;
+    top: 26px;
   }
 }

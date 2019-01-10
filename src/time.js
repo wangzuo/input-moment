@@ -1,6 +1,6 @@
-import cx from 'classnames';
-import React, { Component } from 'react';
-import InputSlider from 'react-input-slider';
+import cx from "classnames";
+import React, { Component } from "react";
+import InputSlider from "react-input-slider";
 
 export default class extends Component {
   changeHours = pos => {
@@ -21,9 +21,14 @@ export default class extends Component {
     return (
       <div className={cx('m-time', this.props.className)}>
         <div className="showtime">
-          <span className="time">{m.format('HH')}</span>
+          <span className="time">
+            {this.props.amPmFormat ? m.format("h") : m.format("HH")}
+          </span>
           <span className="separater">:</span>
-          <span className="time">{m.format('mm')}</span>
+          <span className="time">{m.format("mm")}</span>
+          {this.props.amPmFormat && (
+            <span className="amPmText">{m.format("A")}</span>
+          )}
         </div>
 
         <div className="sliders">
