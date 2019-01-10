@@ -1,6 +1,6 @@
-import cx from "classnames";
-import React, { Component } from "react";
-import InputSlider from "react-input-slider";
+import cx from 'classnames';
+import React, { Component } from 'react';
+import InputSlider from 'react-input-slider';
 
 export default class extends Component {
   changeHours = pos => {
