@@ -13,7 +13,7 @@ export default class InputMoment extends Component {
   };
 
   state = {
-    tab: 0
+    tab: 1
   };
 
   handleClickTab = (e, tab) => {
@@ -48,14 +48,14 @@ export default class InputMoment extends Component {
             className={cx('ion-calendar im-btn', { 'is-active': tab === 0 })}
             onClick={e => this.handleClickTab(e, 0)}
           >
-            Date
+            DATE
           </button>
           <button
             type="button"
             className={cx('ion-clock im-btn', { 'is-active': tab === 1 })}
             onClick={e => this.handleClickTab(e, 1)}
           >
-            Time
+            TIME
           </button>
         </div>
 
@@ -79,10 +79,10 @@ export default class InputMoment extends Component {
         {this.props.onSave ? (
           <button
             type="button"
-            className="im-btn btn-save ion-checkmark"
+            className="im-btn btn-save"
             onClick={this.handleSave}
           >
-            Save
+            SET
           </button>
         ) : null}
       </div>
