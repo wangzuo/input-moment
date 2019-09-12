@@ -21,9 +21,10 @@ export default class extends Component {
     return (
       <div className={cx('m-time', this.props.className)}>
         <div className="showtime">
-          <span className="time">{m.format('HH')}</span>
+          <span className="time">{m.format('h')}</span>
           <span className="separater">:</span>
           <span className="time">{m.format('mm')}</span>
+          <span className="time designation">{m.format('A')}</span>
         </div>
 
         <div className="sliders">
