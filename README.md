@@ -1,3 +1,5 @@
+UPDATED FOR PIVOT WEB
+
 # input-moment 
 [![npm](https://img.shields.io/npm/v/input-moment.svg)](https://www.npmjs.com/package/input-moment)
 [![Build Status](https://travis-ci.org/wangzuo/input-moment.svg?branch=master)](https://travis-ci.org/wangzuo/input-moment)
