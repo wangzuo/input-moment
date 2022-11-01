@@ -21,6 +21,8 @@ http://wangzuo.github.io/input-moment
 
 ### Usage
 ``` javascript
+import "input-moment/dist/input-moment.css";
+
 <InputMoment
   moment={this.state.moment}
   onChange={this.handleChange}
