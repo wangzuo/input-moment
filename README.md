@@ -23,7 +23,7 @@ http://wangzuo.github.io/input-moment
 ``` javascript
 <InputMoment
   moment={this.state.moment}
-  onChange={this.handleChange}
+  onChange={value => this.handleChange(moment(time))}
   onSave={this.handleSave}
   minStep={1} // default
   hourStep={1} // default
